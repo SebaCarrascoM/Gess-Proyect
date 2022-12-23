@@ -1,0 +1,75 @@
+{% extends 'app/dashboard/dashboard.html' %}
+
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+{% block contenido %}
+<div class="mt-5">
+    <!-- Row -->
+    <div class="row row-sm">
+        <div class="col-lg-12">
+            <div class="card custom-card overflow-hidden">
+                <div class="card-body">
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="main-content-label mb-1">Usuarios Registrados</h6>
+                            </div>
+                            <div class="col justify-content-end d-flex">
+                                <a href="{% url 'agregar-usuario' %}" class="btn btn-primary">Agregar</a>
+                            </div>
+                        </div>
+                        <p class="text-muted card-sub-title">En esta tabla se visualizan todos los usuarios registrados :</p>
+                    </div>
+                    <div class="table-responsive  export-table">
+                        <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
+                            <thead>
+                                <tr>
+                                    <th class="border-bottom-0">Usuario</th>
+                                    <th class="border-bottom-0">Nombre</th>
+                                    <th class="border-bottom-0">Apellido</th>
+                                    <th class="border-bottom-0">Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for u in entity %}
+                                <tr>
+                                    <td>{{ u.username }}</td>
+                                    <td>{{ u.first_name }}</td>
+                                    <td>{{ u.last_name }}</td>
+                                    <td>{{ u.email }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Row -->
+</div>
+{% endblock %}
+
+{% block js %}
+<!-- INTERNAL Select2 js -->
+<script src="{% static 'assets/dashboard/plugins/select2/js/select2.full.min.js' %}"></script>
+
+<!-- Internal Data tables -->
+<script src="{% static 'assets/dashboard/plugins/datatable/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/js/dataTables.bootstrap5.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/js/buttons.bootstrap5.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/js/jszip.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/pdfmake/pdfmake.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/pdfmake/vfs_fonts.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/js/buttons.colVis.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/datatable/responsive.bootstrap5.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/js/table-data.js' %}"></script>
+
+{% endblock %}

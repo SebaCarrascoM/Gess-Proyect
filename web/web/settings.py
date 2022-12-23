@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7_=ikd_v0m@cap8sy%&vrsh2v=c68&bt@1+or%kim!(o($dh8i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
@@ -77,8 +78,12 @@ WSGI_APPLICATION = 'web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sparemot_gssoc_db',
+        'USER': 'sparemot_gssoc_admin',
+        'PASSWORD': 'SBFZfX%btEJ]',
+        'PORT': '3306',
+        'HOST': '104.243.32.64',
     }
 }
 
@@ -117,7 +122,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+# Develop
+DEBUG = True
+ALLOWED_HOSTS = []
 STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Production
+# STATIC_URL="/static/"
+# MEDIA_URL='/media/'
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),) 
+# STATIC_ROOT='/home/sparemot/public_html/static'
+# MEDIA_ROOT='/home/sparemot/public_html/media'
+# DEBUG = False
+# ALLOWED_HOSTS = ['https://sparemotors.cl', 'sparemotors.cl']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
