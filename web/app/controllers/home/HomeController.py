@@ -12,3 +12,6 @@ from django.utils import timezone
 def home(request):
 
     return render(request, 'app/home/index.html')
+
+def about(request):
+    return render(request, 'app/home/about.html') 
