@@ -5,7 +5,8 @@ from .controllers.dashboard.EmpresasController import *
 
 urlpatterns = [
     path('', home , name="home"),
-    path('sobre', about , name="about"),
+    path('sobre-nosotros/', about , name="about"),
+    path('contacto/', contacto , name="contacto"),
     # USUARIOS
     path('usuarios/', listar_usuarios, name="usuarios"),
     path('agregar-usuario/', agregar_usuario, name="agregar-usuario"),

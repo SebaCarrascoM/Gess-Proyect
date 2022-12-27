@@ -1,10 +1,7 @@
-{% extends 'app/home/index.html' %}
-
+{% include 'app/home/index.html' %}
 {% load static %}
-
 {% block css %}
 {% endblock %}
-
 {% block contenido %}
     <!-- About Start -->
     <div class="container-fluid bg-secondary p-0">
@@ -62,3 +59,4 @@
     <!-- Template Javascript -->
     <script src="{% static 'app/js/main.js' %}"></script>
 {% endblock %}
+{% include 'app/home/pie.html' %}
