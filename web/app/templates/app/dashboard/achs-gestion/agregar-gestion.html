@@ -14,21 +14,30 @@
         <div class="card">
             <div class="card-body">
                 <div class="main-content-label mg-b-5 mb-4">
-                    Agregar un nuevo Usuario
+                    Agregar una nueva Gestion
                 </div>
                 <form action="" method="post">
                     {% csrf_token %}
                     <div class="control-group form-group">
-                        <label class="form-label">Razon Social</label>
-                        <input type="text" class="form-control required" name="razon_social" placeholder="Razon Social">
+                        <label class="form-label">Empresa</label>
+                        <input type="text" class="form-control required" name="empresa" placeholder="Empresa">
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Rut Empresa</label>
-                        <input type="text" class="form-control required" name="rut_empresa" placeholder="Rut Empresa">
+                        <label class="form-label">Tipo Requisisto</label>
+                        <input type="text" class="form-control required" name="tipo_requisisto" placeholder="Tipo Requisisto">
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Direccion</label>
-                        <input type="text" class="form-control required" name="last_name" placeholder="Apellido">
+                        <label class="form-label">Accion</label>
+                        <input type="text" class="form-control required" name="accion" placeholder="Accion">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Fecha Vencimiento</label>
+                        <input type="text" class="form-control required" name="fecha_vencimiento" placeholder="Fecha Vencimiento">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Observaciones</label>
+                        <input type="text" class="form-control required" name="observaciones" placeholder="Observaciones">
+                    </div>
                     <button type="submit" class="btn btn-primary float-end">Guardar</button>
                 </form>
                 <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->

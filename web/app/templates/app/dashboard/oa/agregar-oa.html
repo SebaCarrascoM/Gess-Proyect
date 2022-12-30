@@ -14,21 +14,34 @@
         <div class="card">
             <div class="card-body">
                 <div class="main-content-label mg-b-5 mb-4">
-                    Agregar un nuevo Usuario
+                    Agregar un nuevo Trabajos
                 </div>
                 <form action="" method="post">
                     {% csrf_token %}
                     <div class="control-group form-group">
-                        <label class="form-label">Razon Social</label>
-                        <input type="text" class="form-control required" name="razon_social" placeholder="Razon Social">
+                        <label class="form-label">Empresa</label>
+                        <input type="text" class="form-control required" name="empresa" placeholder="Empresa">
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Rut Empresa</label>
-                        <input type="text" class="form-control required" name="rut_empresa" placeholder="Rut Empresa">
+                        <label class="form-label">Usuarios Web</label>
+                        <input type="text" class="form-control required" name="usuario_web" placeholder="Usuarios Web">
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Direccion</label>
-                        <input type="text" class="form-control required" name="last_name" placeholder="Apellido">
+                        <label class="form-label">Clave Web</label>
+                        <input type="text" class="form-control required" name="clave_web" placeholder="Clave Web">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Asesor OA</label>
+                        <input type="text" class="form-control required" name="asesor_oa" placeholder="Asesor OA">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Telefono</label>
+                        <input type="text" class="form-control required" name="telefono" placeholder="Telefono">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Correo OA</label>
+                        <input type="text" class="form-control required" name="correo_oa" placeholder="Correo OA">
+                    </div>
                     <button type="submit" class="btn btn-primary float-end">Guardar</button>
                 </form>
                 <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->

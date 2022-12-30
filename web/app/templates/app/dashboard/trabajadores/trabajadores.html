@@ -15,31 +15,43 @@
                     <div>
                         <div class="row">
                             <div class="col">
-                                <h6 class="main-content-label mb-1">Empresas Registrados</h6>
+                                <h6 class="main-content-label mb-1">Trabajadores Registrados</h6>
                             </div>
                             <div class="col justify-content-end d-flex">
-                                <a href="{% url 'agregar-empresa' %}" class="btn btn-primary">Agregar</a>
+                                <a href="{% url 'agregar-trabajador' %}" class="btn btn-primary">Agregar</a>
                             </div>
                         </div>
-                        <p class="text-muted card-sub-title">En esta tabla se visualizan todos los empresas registradas :</p>
+                        <p class="text-muted card-sub-title">En esta tabla se visualizan todos los trabajadores registrados :</p>
                     </div>
                     <div class="table-responsive  export-table">
                         <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
                             <thead>
                                 <tr>
-                                    <th class="border-bottom-0">Razon Social</th>
-                                    <th class="border-bottom-0">Rut Empresa</th>
-                                    <th class="border-bottom-0">Direccion</th>
-                                    <th class="border-bottom-0">CT</th>
+                                    <th class="border-bottom-0">Empresa</th>
+                                    <th class="border-bottom-0">Nombre Trabajador</th>
+                                    <th class="border-bottom-0">Rut Trabajador</th>
+                                    <th class="border-bottom-0">Direcion Trabajador</th>
+                                    <th class="border-bottom-0">Email Trabajador</th>
+                                    <th class="border-bottom-0">Telefono Trabajador</th>
+                                    <th class="border-bottom-0">Cargo</th>
+                                    <th class="border-bottom-0">Area</th>
+                                    <th class="border-bottom-0">Fecha Nacimiento</th>
+                                    <th class="border-bottom-0">Fecha Ingreso</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for u in entity %}
                                 <tr>
-                                    <td>{{ u.razon_social }}</td>
-                                    <td>{{ u.rut_empresa }}</td>
-                                    <td>{{ u.direccion }}</td>
-                                    <td>{{ u.ct }}</td>
+                                    <td>{{ u.id_empresa }}</td>
+                                    <td>{{ u.nombre_trabajador }}</td>
+                                    <td>{{ u.rut_trabajador }}</td>
+                                    <td>{{ u.direccion_trabajador }}</td>
+                                    <td>{{ u.email_trabajador }}</td>
+                                    <td>{{ u.cargo }}</td>
+                                    <td>{{ u.area }}</td>
+                                    <td>{{ u.telefono_trabajador }}</td>
+                                    <td>{{ u.fecha_nacimiento }}</td>
+                                    <td>{{ u.fecha_ingreso }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

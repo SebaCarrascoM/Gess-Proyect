@@ -1,0 +1,92 @@
+{% extends 'app/dashboard/dashboard.html' %}
+
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+    <!-- row -->
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="main-content-label mg-b-5 mb-4">
+                    Agregar un nuevo Trabajador
+                </div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="control-group form-group">
+                        <label class="form-label">Empresa</label>
+                        <input type="text" class="form-control required" name="empresa" placeholder="Empresa">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Nombre Trabajador</label>
+                        <input type="text" class="form-control required" name="nombre_trabajador" placeholder="Nombre Trabajador">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Rut Trabajador</label>
+                        <input type="text" class="form-control required" name="rut_trabajador" placeholder="Rut Trabajador">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Direcion Trabajador</label>
+                        <input type="text" class="form-control required" name="direccion_trabajador" placeholder="Direcion Trabajador">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Email Trabajador</label>
+                        <input type="text" class="form-control required" name="email_trabajador" placeholder="Email Trabajador">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Telefono Trabajador</label>
+                        <input type="text" class="form-control required" name="telefono_trabajador" placeholder="Telefono Trabajador">
+                    </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Cargo</label>
+                        <input type="text" class="form-control required" name="cargo" placeholder="Cargo">
+                    </div>
+                    <div class="control-group form-group mb-3">
+                        <label class="form-label">Area</label>
+                        <input type="text" class="form-control required" name="area" placeholder="Area">
+                    </div>
+                    <div class="control-group form-group mb-3">
+                        <label class="form-label">Fecha Nacimiento</label>
+                        <input type="date" class="form-control required" name="fecha_nacimiento" placeholder="Fecha Nacimiento">
+                    </div>
+                    <div class="control-group form-group mb-3">
+                        <label class="form-label">Fecha Ingreso</label>
+                        <input type="date" class="form-control required" name="fecha_ingreso" placeholder="Fecha Ingreso">
+                    </div>
+                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                </form>
+                <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- row closed -->
+</div>
+
+{% endblock %}
+
+{% block js %}
+<!--Internal  Select2 js -->
+<script src="{% static 'assets/dashboard/plugins/select2/js/select2.min.js' %}"></script>
+<!-- Internal Jquery.steps js -->
+<script src="{% static 'assets/dashboard/plugins/jquery-steps/jquery.steps.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/parsleyjs/parsley.min.js' %}"></script>
+<!--Internal  Form-wizard js -->
+<script src="{% static 'assets/dashboard/js/form-wizard.js' %}"></script>
+
+<!--Internal Fileuploads js-->
+<script src="{% static 'assets/dashboard/plugins/fileuploads/js/fileupload.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/fileuploads/js/file-upload.js' %}"></script>
+
+<!--Internal Fancy uploader js-->
+<script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.ui.widget.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.fileupload.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.iframe-transport.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.fancy-fileupload.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/fancyuploder/fancy-uploader.js' %}"></script>
+{% endblock %}
