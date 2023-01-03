@@ -15,6 +15,7 @@ urlpatterns = [
     path('', home , name="home"),
     path('sobre-nosotros/', about , name="about"),
     path('contacto/', contacto , name="contacto"),
+    path('inicio/', inicio , name="inicio"),
     # Usuarios
     path('usuarios/', listar_usuarios, name="usuarios"),
     path('agregar-usuario/', agregar_usuario, name="agregar-usuario"),

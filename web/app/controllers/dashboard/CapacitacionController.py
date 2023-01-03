@@ -19,17 +19,17 @@ def agregar_capacitacion(request):
 
 @login_required
 def listar_capacitacion(request):
-    # usuarios = AuthUser.objects.all()
+    # capacitacion = AuthUser.objects.all()
     # page = request.GET.get('page', 1)
     
     # try:
-    #     paginator = Paginator(usuarios, 5)
-    #     usuarios = paginator.page(page)
+    #     paginator = Paginator(capacitacion, 5)
+    #     capacitacion = paginator.page(page)
     # except:
     #     raise Http404
     
     # data = {
-    #     'entity': usuarios,
+    #     'entity': capacitacion,
     #     'paginator': paginator
     # }
     

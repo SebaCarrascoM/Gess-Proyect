@@ -19,17 +19,17 @@ def agregar_contacto(request):
 
 @login_required
 def listar_contactos(request):
-    # usuarios = AuthUser.objects.all()
+    # contacto_empresa = AuthUser.objects.all()
     # page = request.GET.get('page', 1)
     
     # try:
-    #     paginator = Paginator(usuarios, 5)
-    #     usuarios = paginator.page(page)
+    #     paginator = Paginator(contacto_empresa, 5)
+    #     contacto_empresa = paginator.page(page)
     # except:
     #     raise Http404
     
     # data = {
-    #     'entity': usuarios,
+    #     'entity': contacto_empresa,
     #     'paginator': paginator
     # }
     

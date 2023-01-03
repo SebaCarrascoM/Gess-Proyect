@@ -15,5 +15,9 @@ def home(request):
 
 def about(request):
     return render(request, 'app/home/about.html') 
+
 def contacto(request):
     return render(request, 'app/home/contact.html')
+
+def inicio(request):
+    return render(request, 'app/dashboard/dashboard.html')

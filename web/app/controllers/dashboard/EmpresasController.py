@@ -19,17 +19,17 @@ def agregar_empresa(request):
 
 @login_required
 def listar_empresas(request):
-    # usuarios = AuthUser.objects.all()
+    # empresa = AuthUser.objects.all()
     # page = request.GET.get('page', 1)
     
     # try:
-    #     paginator = Paginator(usuarios, 5)
-    #     usuarios = paginator.page(page)
+    #     paginator = Paginator(empresa, 5)
+    #     empresa = paginator.page(page)
     # except:
     #     raise Http404
     
     # data = {
-    #     'entity': usuarios,
+    #     'entity': empresa,
     #     'paginator': paginator
     # }
     

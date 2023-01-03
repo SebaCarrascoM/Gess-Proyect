@@ -19,17 +19,17 @@ def agregar_trabajos(request):
 
 @login_required
 def listar_trabajos(request):
-    # usuarios = AuthUser.objects.all()
+    # trabajos_nuevos = AuthUser.objects.all()
     # page = request.GET.get('page', 1)
     
     # try:
-    #     paginator = Paginator(usuarios, 5)
-    #     usuarios = paginator.page(page)
+    #     paginator = Paginator(trabajos_nuevos, 5)
+    #     trabajos_nuevos = paginator.page(page)
     # except:
     #     raise Http404
     
     # data = {
-    #     'entity': usuarios,
+    #     'entity': trabajos_nuevos,
     #     'paginator': paginator
     # }
     

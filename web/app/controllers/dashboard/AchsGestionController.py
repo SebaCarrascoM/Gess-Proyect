@@ -19,17 +19,17 @@ def agregar_gestion(request):
 
 @login_required
 def listar_gestiones(request):
-    # usuarios = AuthUser.objects.all()
+    # achs_gestion = AuthUser.objects.all()
     # page = request.GET.get('page', 1)
     
     # try:
-    #     paginator = Paginator(usuarios, 5)
-    #     usuarios = paginator.page(page)
+    #     paginator = Paginator(achs_gestion, 5)
+    #     achs_gestion = paginator.page(page)
     # except:
     #     raise Http404
     
     # data = {
-    #     'entity': usuarios,
+    #     'entity': achs_gestion,
     #     'paginator': paginator
     # }
     

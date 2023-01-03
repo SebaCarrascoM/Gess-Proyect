@@ -433,6 +433,11 @@
 									<span class="side-menu__label">Empresas</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
 										<li><a class="slide-item" href="{% url 'empresas' %}">Ver Empresas</a></li>
+										<li><a class="slide-item" href="{% url 'contactos' %}">Ver Contactos</a></li>
+										<li><a class="slide-item" href="{% url 'contactos' %}">Ver Archivos Empresas</a></li>
+										<li><a class="slide-item" href="{% url 'protocolo' %}">Ver Protocolo</a></li>
+										<li><a class="slide-item" href="{% url 'oa' %}">Ver OA</a></li>
+										<li><a class="slide-item" href="{% url 'gestiones' %}">Ver ACHS Gestiones</a></li>
 									</ul>
 								</li>
 								<li class="side-item side-item-category">Trabajador</li>
@@ -441,62 +446,8 @@
 									<span class="side-menu__label">Trabajadores</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
 										<li><a class="slide-item" href="{% url 'trabajadores' %}">Ver Trabajadores</a></li>
-									</ul>
-								</li>
-								<li class="side-item side-item-category">Contacto</li>
-                                <li class="slide">
-									<a class="side-menu__item" data-bs-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none"><path d="M12 11.796C14.7189 11.796 16.9231 9.60308 16.9231 6.89801C16.9231 4.19294 14.7189 2.00005 12 2.00005C9.28106 2.00005 7.07692 4.19294 7.07692 6.89801C7.07692 9.60308 9.28106 11.796 12 11.796Z"/><path d="M14.5641 13.8369H9.4359C6.46154 13.8369 4 16.2859 4 19.245C4 19.9593 4.30769 20.5716 4.92308 20.8777C5.84615 21.3879 7.89744 22.0001 12 22.0001C16.1026 22.0001 18.1538 21.3879 19.0769 20.8777C19.5897 20.5716 20 19.9593 20 19.245C20 16.1838 17.5385 13.8369 14.5641 13.8369Z"/></svg>
-									<span class="side-menu__label">Contactos</span><i class="angle fe fe-chevron-right"></i></a>
-									<ul class="slide-menu">
-										<li><a class="slide-item" href="{% url 'contactos' %}">Ver Contactos</a></li>
-									</ul>
-								</li>
-								<li class="side-item side-item-category">Archivo Empresa</li>
-                                <li class="slide">
-									<a class="side-menu__item" data-bs-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none"><path d="M12 11.796C14.7189 11.796 16.9231 9.60308 16.9231 6.89801C16.9231 4.19294 14.7189 2.00005 12 2.00005C9.28106 2.00005 7.07692 4.19294 7.07692 6.89801C7.07692 9.60308 9.28106 11.796 12 11.796Z"/><path d="M14.5641 13.8369H9.4359C6.46154 13.8369 4 16.2859 4 19.245C4 19.9593 4.30769 20.5716 4.92308 20.8777C5.84615 21.3879 7.89744 22.0001 12 22.0001C16.1026 22.0001 18.1538 21.3879 19.0769 20.8777C19.5897 20.5716 20 19.9593 20 19.245C20 16.1838 17.5385 13.8369 14.5641 13.8369Z"/></svg>
-									<span class="side-menu__label">Archivos Empresas</span><i class="angle fe fe-chevron-right"></i></a>
-									<ul class="slide-menu">
-										<li><a class="slide-item" href="{% url 'contactos' %}">Ver Archivos Empresas</a></li>
-									</ul>
-								</li>
-								<li class="side-item side-item-category">ACHS Gestion</li>
-                                <li class="slide">
-									<a class="side-menu__item" data-bs-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none"><path d="M12 11.796C14.7189 11.796 16.9231 9.60308 16.9231 6.89801C16.9231 4.19294 14.7189 2.00005 12 2.00005C9.28106 2.00005 7.07692 4.19294 7.07692 6.89801C7.07692 9.60308 9.28106 11.796 12 11.796Z"/><path d="M14.5641 13.8369H9.4359C6.46154 13.8369 4 16.2859 4 19.245C4 19.9593 4.30769 20.5716 4.92308 20.8777C5.84615 21.3879 7.89744 22.0001 12 22.0001C16.1026 22.0001 18.1538 21.3879 19.0769 20.8777C19.5897 20.5716 20 19.9593 20 19.245C20 16.1838 17.5385 13.8369 14.5641 13.8369Z"/></svg>
-									<span class="side-menu__label">ACHS Gestiones</span><i class="angle fe fe-chevron-right"></i></a>
-									<ul class="slide-menu">
-										<li><a class="slide-item" href="{% url 'gestiones' %}">Ver ACHS Gestiones</a></li>
-									</ul>
-								</li>
-								<li class="side-item side-item-category">Trabajo</li>
-                                <li class="slide">
-									<a class="side-menu__item" data-bs-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none"><path d="M12 11.796C14.7189 11.796 16.9231 9.60308 16.9231 6.89801C16.9231 4.19294 14.7189 2.00005 12 2.00005C9.28106 2.00005 7.07692 4.19294 7.07692 6.89801C7.07692 9.60308 9.28106 11.796 12 11.796Z"/><path d="M14.5641 13.8369H9.4359C6.46154 13.8369 4 16.2859 4 19.245C4 19.9593 4.30769 20.5716 4.92308 20.8777C5.84615 21.3879 7.89744 22.0001 12 22.0001C16.1026 22.0001 18.1538 21.3879 19.0769 20.8777C19.5897 20.5716 20 19.9593 20 19.245C20 16.1838 17.5385 13.8369 14.5641 13.8369Z"/></svg>
-									<span class="side-menu__label">Trabajos</span><i class="angle fe fe-chevron-right"></i></a>
-									<ul class="slide-menu">
 										<li><a class="slide-item" href="{% url 'trabajos' %}">Ver Trabajos</a></li>
-									</ul>
-								</li>
-								<li class="side-item side-item-category">OA</li>
-                                <li class="slide">
-									<a class="side-menu__item" data-bs-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none"><path d="M12 11.796C14.7189 11.796 16.9231 9.60308 16.9231 6.89801C16.9231 4.19294 14.7189 2.00005 12 2.00005C9.28106 2.00005 7.07692 4.19294 7.07692 6.89801C7.07692 9.60308 9.28106 11.796 12 11.796Z"/><path d="M14.5641 13.8369H9.4359C6.46154 13.8369 4 16.2859 4 19.245C4 19.9593 4.30769 20.5716 4.92308 20.8777C5.84615 21.3879 7.89744 22.0001 12 22.0001C16.1026 22.0001 18.1538 21.3879 19.0769 20.8777C19.5897 20.5716 20 19.9593 20 19.245C20 16.1838 17.5385 13.8369 14.5641 13.8369Z"/></svg>
-									<span class="side-menu__label">OA</span><i class="angle fe fe-chevron-right"></i></a>
-									<ul class="slide-menu">
-										<li><a class="slide-item" href="{% url 'oa' %}">Ver OA</a></li>
-									</ul>
-								</li>
-								<li class="side-item side-item-category">Capacitacion</li>
-                                <li class="slide">
-									<a class="side-menu__item" data-bs-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none"><path d="M12 11.796C14.7189 11.796 16.9231 9.60308 16.9231 6.89801C16.9231 4.19294 14.7189 2.00005 12 2.00005C9.28106 2.00005 7.07692 4.19294 7.07692 6.89801C7.07692 9.60308 9.28106 11.796 12 11.796Z"/><path d="M14.5641 13.8369H9.4359C6.46154 13.8369 4 16.2859 4 19.245C4 19.9593 4.30769 20.5716 4.92308 20.8777C5.84615 21.3879 7.89744 22.0001 12 22.0001C16.1026 22.0001 18.1538 21.3879 19.0769 20.8777C19.5897 20.5716 20 19.9593 20 19.245C20 16.1838 17.5385 13.8369 14.5641 13.8369Z"/></svg>
-									<span class="side-menu__label">Capacitaciones</span><i class="angle fe fe-chevron-right"></i></a>
-									<ul class="slide-menu">
 										<li><a class="slide-item" href="{% url 'capacitaciones' %}">Ver Capacitaciones</a></li>
-									</ul>
-								</li>
-								<li class="side-item side-item-category">Protocolo</li>
-                                <li class="slide">
-									<a class="side-menu__item" data-bs-toggle="slide" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none"><path d="M12 11.796C14.7189 11.796 16.9231 9.60308 16.9231 6.89801C16.9231 4.19294 14.7189 2.00005 12 2.00005C9.28106 2.00005 7.07692 4.19294 7.07692 6.89801C7.07692 9.60308 9.28106 11.796 12 11.796Z"/><path d="M14.5641 13.8369H9.4359C6.46154 13.8369 4 16.2859 4 19.245C4 19.9593 4.30769 20.5716 4.92308 20.8777C5.84615 21.3879 7.89744 22.0001 12 22.0001C16.1026 22.0001 18.1538 21.3879 19.0769 20.8777C19.5897 20.5716 20 19.9593 20 19.245C20 16.1838 17.5385 13.8369 14.5641 13.8369Z"/></svg>
-									<span class="side-menu__label">Protocolos</span><i class="angle fe fe-chevron-right"></i></a>
-									<ul class="slide-menu">
-										<li><a class="slide-item" href="{% url 'protocolo' %}">Ver Protocolo</a></li>
 									</ul>
 								</li>
 							</ul>
