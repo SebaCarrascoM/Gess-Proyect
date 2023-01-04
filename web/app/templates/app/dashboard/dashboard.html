@@ -16,7 +16,7 @@
         </title>
 
 		<!-- Favicon -->
-		<link rel="icon" href="{% static 'assets/dashboard/img/brand/spa-negro.png' %}" type="image/x-icon"/>
+		<link rel="icon" href="{% static 'assets/dashboard/img/brand/icon-Gess-Pequeño.png' %}" type="image/x-icon"/>
 
 		<!-- Icons css -->
 		<link href="{% static 'assets/dashboard/css/icons.css' %}" rel="stylesheet">
@@ -342,8 +342,8 @@
 						<div class="main-header-left ">
 							<div class="responsive-logo">
 								<a href="#" class="header-logo">
-									<img src="{% static 'assets/dashboard/img/brand/logo-negro.png' %}" class="mobile-logo logo-1" alt="logo">
-									<img src="{% static 'assets/dashboard/img/brand/logo-blanco.png' %}" class="mobile-logo dark-logo-1" alt="logo">
+									<img src="{% static 'assets/dashboard/img/brand/Logo-Gess-Pequeño.png' %}" class="mobile-logo logo-1" alt="logo">
+									<img src="{% static 'assets/dashboard/img/brand/Logo-Gess-Pequeño.png' %}" class="mobile-logo dark-logo-1" alt="logo">
 								</a>
 							</div>
 							<div class="app-sidebar__toggle" data-bs-toggle="sidebar">
@@ -352,8 +352,8 @@
 							</div>
 							<div class="logo-horizontal">
 								<a href="#" class="header-logo">
-									<img src="{% static 'assets/dashboard/img/brand/logo.png' %}" class="mobile-logo logo-1" alt="logo">
-									<img src="{% static 'assets/dashboard/img/brand/logo-white.png' %}" class="mobile-logo dark-logo-1" alt="logo">
+									<img src="{% static 'assets/dashboard/img/brand/Logo-Gess-Pequeño.png' %}" class="mobile-logo logo-1" alt="logo">
+									<img src="{% static 'assets/dashboard/img/brand/Logo-Gess-Pequeño.png' %}" class="mobile-logo dark-logo-1" alt="logo">
 								</a>
 							</div>
 						</div>
@@ -374,11 +374,11 @@
 											<a class="new nav-link full-screen-link" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" width="24" height="24" viewBox="0 0 24 24"><path d="M5 5h5V3H3v7h2zm5 14H5v-5H3v7h7zm11-5h-2v5h-5v2h7zm-2-4h2V3h-7v2h5z"/></svg></a>
 										</li>
 										<li class="dropdown main-profile-menu nav nav-item nav-link ps-lg-2">
-											<a class="new nav-link profile-user d-flex" href="" data-bs-toggle="dropdown"><img alt="" src="{% static 'assets/dashboard/img/brand/spa-negro.png' %}" class="avatarMovimiento"></a>
+											<a class="new nav-link profile-user d-flex" href="" data-bs-toggle="dropdown"><img alt="" src="{% static 'assets/dashboard/img/brand/icon-Gess-Pequeño.png' %}" class="avatarMovimiento"></a>
 											<div class="dropdown-menu">
 												<div class="menu-header-content p-3 border-bottom">
 													<div class="d-flex wd-100p">
-														<div class="main-img-user"><img alt="" src="{% static 'assets/dashboard/img/brand/spa-negro.png' %}" class=""></div>
+														<div class="main-img-user"><img alt="" src="{% static 'assets/dashboard/img/brand/Logo-Gess-Pequeño.png' %}" class=""></div>
 														<div class="ms-3 my-auto">
 															<h6 class="tx-15 font-weight-semibold mb-0">{% if user.is_authenticated %} {{ user.first_name }} {{ user.last_name }} {% endif %}</h6>
 														</div>
@@ -408,10 +408,10 @@
 					<aside class="app-sidebar">
 						<div class="main-sidebar-header active">
 							<a class="header-logo active" href="">
-								<img src="{% static 'assets/dashboard/img/brand/logo-negro.png' %}" class="main-logo  desktop-logo" alt="logo">
-								<img src="{% static 'assets/dashboard/img/brand/logo-blanco.png' %}" class="main-logo  desktop-dark" alt="logo">
-								<img src="{% static 'assets/dashboard/img/brand/spa-negro.png' %}" class="main-logo  mobile-logo" alt="logo">
-								<img src="{% static 'assets/dashboard/img/brand/spa-blanco.png' %}" class="main-logo  mobile-dark" alt="logo">
+								<img src="{% static 'assets/dashboard/img/brand/Logo-Gess-PC.png' %}" class="main-logo  desktop-logo" alt="logo">
+								<img src="{% static 'assets/dashboard/img/brand/Logo-Gess-PC.png' %}" class="main-logo  desktop-dark" alt="logo">
+								<img src="{% static 'assets/dashboard/img/brand/Logo-Gess-Pequeño.png' %}" class="main-logo  mobile-logo" alt="logo">
+								<img src="{% static 'assets/dashboard/img/brand/Logo-Gess-Pequeño.png' %}" class="main-logo  mobile-dark" alt="logo">
 							</a>
 						</div>
 						<div class="main-sidemenu">
@@ -514,7 +514,41 @@
 		<!-- Switcher js -->
 		<script src="{% static 'assets/dashboard/switcher/js/switcher.js' %}"></script>
 
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         {% block js %}
         {% endblock %}
+		{% if messages %}
+        {% for m in messages %}
+            {% if m.tags == "success" %}
+                <script>
+
+                    Swal.fire({
+                        "title": "Felicitaciones",
+                        "text": "{{ m }}",
+                        "icon": "success"
+                    })
+                </script>
+            {% elif m.tags == "error" %}
+                <script>
+
+                    Swal.fire({
+                        "title": "Error",
+                        "text": "{{ m }}",
+                        "icon": "error"
+                    })
+                </script>
+            {% elif m.tags == "warning" %}
+                <script>
+
+                    Swal.fire({
+                        "title": "Advertencia",
+                        "text": "{{ m }}",
+                        "icon": "warning"
+                    })
+                </script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 	</body>
 </html>

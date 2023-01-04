@@ -19,18 +19,18 @@ def agregar_protocolo(request):
 
 @login_required
 def listar_protocolo(request):
-    # protocolo = AuthUser.objects.all()
-    # page = request.GET.get('page', 1)
+    protocolo = AuthUser.objects.all()
+    page = request.GET.get('page', 1)
     
-    # try:
-    #     paginator = Paginator(usuarios, 5)
-    #     protocolo = paginator.page(page)
-    # except:
-    #     raise Http404
+    try:
+        paginator = Paginator(protocolo, 5)
+        protocolo = paginator.page(page)
+    except:
+        raise Http404
     
-    # data = {
-    #     'entity': protocolo,
-    #     'paginator': paginator
-    # }
+    data = {
+        'entity': protocolo,
+        'paginator': paginator
+    }
     
     return render(request, 'app/dashboard/protocolo/protocolos.html')

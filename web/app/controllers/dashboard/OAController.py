@@ -19,18 +19,20 @@ def agregar_oa(request):
 
 @login_required
 def listar_oa(request):
-    # oa = AuthUser.objects.all()
-    # page = request.GET.get('page', 1)
+    oa = Oa.objects.all()
+    empresa = Empresa.objects.all()
+    page = request.GET.get('page', 1)
     
-    # try:
-    #     paginator = Paginator(oa, 5)
-    #     oa = paginator.page(page)
-    # except:
-    #     raise Http404
+    try:
+        paginator = Paginator(oa, 100)
+        oa = paginator.page(page)
+    except:
+        raise Http404
     
-    # data = {
-    #     'entity': oa,
-    #     'paginator': paginator
-    # }
+    data = {
+        'entity': oa,
+        'empresa':empresa,
+        'paginator': paginator
+    }
     
-    return render(request, 'app/dashboard/oa/oa.html')
+    return render(request, 'app/dashboard/oa/oa.html',data)

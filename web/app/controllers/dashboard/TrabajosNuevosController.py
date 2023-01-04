@@ -13,24 +13,31 @@ def agregar_trabajos(request):
 
     if request.method == 'POST':
         print(request.POST)
-        
+        formulario = EmpresaForm(data=request.POST)
+        if formulario.is_valid():
+            print('hola')
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            # login(request, user)
+            messages.success(request, "Trabajo Creado Exitosamente")
+            return redirect(to="trabajos")
 
     return render(request, 'app/dashboard/trabajos-nuevos/agregar-trabajos.html') 
 
 @login_required
 def listar_trabajos(request):
-    # trabajos_nuevos = AuthUser.objects.all()
-    # page = request.GET.get('page', 1)
+    trabajos_nuevos = AuthUser.objects.all()
+    page = request.GET.get('page', 1)
     
-    # try:
-    #     paginator = Paginator(trabajos_nuevos, 5)
-    #     trabajos_nuevos = paginator.page(page)
-    # except:
-    #     raise Http404
+    try:
+        paginator = Paginator(trabajos_nuevos, 5)
+        trabajos_nuevos = paginator.page(page)
+    except:
+        raise Http404
     
-    # data = {
-    #     'entity': trabajos_nuevos,
-    #     'paginator': paginator
-    # }
+    data = {
+        'entity': trabajos_nuevos,
+        'paginator': paginator
+    }
     
     return render(request, 'app/dashboard/trabajos-nuevos/trabajos.html')

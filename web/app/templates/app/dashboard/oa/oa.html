@@ -37,14 +37,16 @@
                             </thead>
                             <tbody>
                                 {% for u in entity %}
+                                {% for e in empresa %}
                                 <tr>
-                                    <td>{{ u.id_empresa }}</td>
+                                    <td>{{ e.razon_social }}</td>
                                     <td>{{ u.usuario_web }}</td>
                                     <td>{{ u.clave_web }}</td>
                                     <td>{{ u.asesor_oa }}</td>
                                     <td>{{ u.telefono }}</td>
                                     <td>{{ u.correo_oa }}</td>
                                 </tr>
+                                {% endfor %}
                                 {% endfor %}
                             </tbody>
                         </table>

@@ -19,18 +19,18 @@ def agregar_contacto(request):
 
 @login_required
 def listar_contactos(request):
-    # contacto_empresa = AuthUser.objects.all()
-    # page = request.GET.get('page', 1)
+    contacto_empresa = ContactoEmpresa.objects.all()
+    page = request.GET.get('page', 1)
     
-    # try:
-    #     paginator = Paginator(contacto_empresa, 5)
-    #     contacto_empresa = paginator.page(page)
-    # except:
-    #     raise Http404
+    try:
+        paginator = Paginator(contacto_empresa, 5)
+        contacto_empresa = paginator.page(page)
+    except:
+        raise Http404
     
-    # data = {
-    #     'entity': contacto_empresa,
-    #     'paginator': paginator
-    # }
+    data = {
+        'entity': contacto_empresa,
+        'paginator': paginator
+    }
     
     return render(request, 'app/dashboard/contacto/contactos.html')
