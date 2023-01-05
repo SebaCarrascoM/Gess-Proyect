@@ -32,26 +32,18 @@
                                     <th class="border-bottom-0">Direccion</th>
                                     <th class="border-bottom-0">CT</th>
                                     <th class="border-bottom-0">Clave Seremi</th>
-                                    <!--<th class="border-bottom-0">Nombre Contacto</th>
-                                    <th class="border-bottom-0">Rut Contacto</th>
-                                    <th class="border-bottom-0">Cargo Contacto</th>
-                                    <th class="border-bottom-0">Telefono Contacto</th>
-                                    <th class="border-bottom-0">Correo</th>
-                                    <th class="border-bottom-0">Usuario Web</th>
-                                    <th class="border-bottom-0">Clave Web</th>
-                                    <th class="border-bottom-0">Asesor OA</th>
-                                    <th class="border-bottom-0">Telefono Oa</th>
-                                    <th class="border-bottom-0">Correo OA</th>-->
+                                    <th class="border-bottom-0">Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for u in entity %}
+                                {% for u in entity_empresa %}
                                 <tr>
                                     <td>{{ u.razon_social }}</td>
                                     <td>{{ u.rut_empresa }}</td>
                                     <td>{{ u.direccion }}</td>
                                     <td>{{ u.ct }}</td>
                                     <td>{{ u.clave_seremi }}</td>
+                                    <td><a class="btn btn-warning" href="#">Editar</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

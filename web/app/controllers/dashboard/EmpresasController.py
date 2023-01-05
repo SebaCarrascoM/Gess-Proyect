@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 import requests
 from ...forms import *
+from ...models import *
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator
@@ -12,7 +13,7 @@ from django.http import Http404
 def agregar_empresa(request):
 
     if request.method == 'POST':
-        print(request.POST)
+        #print(request.POST)
         result = 0
         data_empresa = {
             'razon_social':request.POST['razon_social'],
@@ -25,9 +26,10 @@ def agregar_empresa(request):
         if formulario_empresa.is_valid():
             formulario_empresa.save() 
             rut = Empresa.objects.filter(rut_empresa=request.POST['rut_empresa'])
+            print(rut)
             for n in rut:
-                id_empresa= n.id_empresa
-                
+                id_empresa = n.id_empresa
+                print(id_empresa)
             result = 1
             print(id_empresa)
         else:
@@ -43,7 +45,7 @@ def agregar_empresa(request):
                 'telefono_contacto':request.POST['telefono_contacto'],
                 'cargo_contacto':request.POST['cargo_contacto'],
                 'correo':request.POST['correo'],
-                'id_empresa': id_empresa
+                'id_empresa':id_empresa
             }
             formulario_contacto = ContactoEmpresaForm(data = data_contacto)
             
@@ -60,7 +62,7 @@ def agregar_empresa(request):
                 'asesor_oa':request.POST['asesor_oa'],
                 'telefono':request.POST['telefono'],
                 'correo_oa':request.POST['correo_oa'],
-                'id_empresa': id_empresa
+                'id_empresa':id_empresa
             }
             print(data_oa)
             formulario_oa = OaForm(data = data_oa)
@@ -79,18 +81,7 @@ def agregar_empresa(request):
 
 @login_required
 def listar_empresas(request):
-    empresa = Empresa.objects.all()
-    contacto = ContactoEmpresa.objects.all()
-    oa = Oa.objects.all()
-    page = request.GET.get('page', 1)
-    
-    try:
-        paginator = Paginator(empresa, 100)
-        empresa = paginator.page(page)
-    except:
-        raise Http404
-    data = {
-        'entity': empresa,
-        'paginator': paginator
-    }
+    data = {}
+    empresas = Empresa.objects.all()
+    data["entity_empresa"]= empresas
     return render(request, 'app/dashboard/empresas/empresas.html', data)

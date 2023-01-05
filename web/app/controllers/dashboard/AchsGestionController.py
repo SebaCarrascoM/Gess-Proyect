@@ -10,27 +10,29 @@ from django.http import Http404
 
 @login_required
 def agregar_gestion(request):
-
+    result = 0
     if request.method == 'POST':
         print(request.POST)
-        
-
-    return render(request, 'app/dashboard/achs-gestion/agregar-gestion.html') 
+        result=1
+        formulario_achs_gestion = AchsGestionForm(data = request.POST)
+        if formulario_achs_gestion.is_valid():
+            formulario_achs_gestion.save()
+        else:
+            result = 0
+        if result == 1:
+            messages.success(request, "Solicitud de contacto enviada correctamente.")
+            return redirect (to="trabajadores")
+        else:
+            messages.error(request, "error.")
+    data = {}
+    empresas = Empresa.objects.all()
+    data["entity_empresa"]= empresas
+    return render(request, 'app/dashboard/achs-gestion/agregar-gestion.html',data) 
 
 @login_required
 def listar_gestiones(request):
-    achs_gestion = AuthUser.objects.all()
-    page = request.GET.get('page', 1)
+    data = {}
+    achs_gestion = AchsGestion.objects.all()
+    data["entity_achs_gestion"]= achs_gestion
     
-    try:
-        paginator = Paginator(achs_gestion, 5)
-        achs_gestion = paginator.page(page)
-    except:
-        raise Http404
-    
-    data = {
-        'entity': achs_gestion,
-        'paginator': paginator
-    }
-    
-    return render(request, 'app/dashboard/achs-gestion/achs-gestiones.html')
+    return render(request, 'app/dashboard/achs-gestion/achs-gestiones.html',data)

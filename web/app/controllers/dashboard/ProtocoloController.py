@@ -10,16 +10,29 @@ from django.http import Http404
 
 @login_required
 def agregar_protocolo(request):
-
+    result = 0
     if request.method == 'POST':
         print(request.POST)
+        result=1
+        formulario_protocolo = ProtocoloForm(data = request.POST)
+        if formulario_protocolo.is_valid():
+            formulario_protocolo.save()
+        else:
+            result = 0
+        if result == 1:
+            messages.success(request, "Solicitud de contacto enviada correctamente.")
+            return redirect (to="trabajadores")
+        else:
+            messages.error(request, "error.")
         
-
-    return render(request, 'app/dashboard/protocolo/agregar-protocolo.html') 
+    data = {}
+    empresas = Empresa.objects.all()
+    data["entity_empresa"]= empresas
+    return render(request, 'app/dashboard/protocolo/agregar-protocolo.html',data) 
 
 @login_required
 def listar_protocolo(request):
-    protocolo = AuthUser.objects.all()
+    protocolo = Protocolo.objects.all()
     page = request.GET.get('page', 1)
     
     try:
@@ -33,4 +46,4 @@ def listar_protocolo(request):
         'paginator': paginator
     }
     
-    return render(request, 'app/dashboard/protocolo/protocolos.html')
+    return render(request, 'app/dashboard/protocolo/protocolos.html',data)

@@ -1,5 +1,17 @@
 from django.db import models
 
+class Empresa(models.Model):
+    id_empresa = models.AutoField(primary_key=True)
+    razon_social = models.CharField(max_length=50)
+    rut_empresa = models.CharField(max_length=13)
+    direccion = models.CharField(max_length=50)
+    ct = models.CharField(max_length=50)
+    clave_seremi = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'empresa' 
+
 class AchsGestion(models.Model):
     id_achs_gestion = models.AutoField(primary_key=True)
     tipo_requisito = models.CharField(max_length=50)
@@ -112,8 +124,9 @@ class ContactoEmpresa(models.Model):
     cargo_contacto = models.CharField(max_length=50)
     telefono_contacto = models.CharField(max_length=13)
     correo = models.CharField(max_length=50)
-    id_empresa = models.ForeignKey('Empresa', models.DO_NOTHING, db_column='id_empresa')
-
+    id_empresa = models.ForeignKey(Empresa, models.DO_NOTHING, db_column='id_empresa')
+    
+    
     class Meta:
         managed = False
         db_table = 'contacto_empresa'
@@ -164,17 +177,6 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-class Empresa(models.Model):
-    id_empresa = models.AutoField(primary_key=True)
-    razon_social = models.CharField(max_length=50)
-    rut_empresa = models.CharField(max_length=13)
-    direccion = models.CharField(max_length=50)
-    ct = models.CharField(max_length=50)
-    clave_seremi = models.CharField(max_length=50)
-
-    class Meta:
-        managed = False
-        db_table = 'empresa'
 
 
 class Oa(models.Model):

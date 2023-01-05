@@ -30,6 +30,7 @@
                                     <th class="border-bottom-0">Empresa</th>
                                     <th class="border-bottom-0">Nombre Trabajador</th>
                                     <th class="border-bottom-0">Tipos de Trabajos</th>
+                                    <th class="border-bottom-0"> Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,6 +39,7 @@
                                     <td>{{ u.id_empresa }}</td>
                                     <td>{{ u.nombre_trabajador }}</td>
                                     <td>{{ u.tipo_trabajos_nuevos }}</td>
+                                    <td><a class="btn btn-warning" href="#">Editar</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
