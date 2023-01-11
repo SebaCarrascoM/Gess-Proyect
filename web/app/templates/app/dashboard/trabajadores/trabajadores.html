@@ -23,8 +23,8 @@
                         </div>
                         <p class="text-muted card-sub-title">En esta tabla se visualizan todos los trabajadores registrados :</p>
                     </div>
-                    <div class="table-responsive  export-table">
-                        <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
+                    <div class="table-responsive-xxl">
+                        <table id="file-datatable" class="table align-middle">
                             <thead>
                                 <tr>
                                     <th class="border-bottom-0">Empresa</th>
@@ -37,6 +37,10 @@
                                     <th class="border-bottom-0">Area</th>
                                     <th class="border-bottom-0">Fecha Nacimiento</th>
                                     <th class="border-bottom-0">Fecha Ingreso</th>
+                                    <th class="border-bottom-0">Capacitacion</th>
+                                    <th class="border-bottom-0">Trabajos Nuevos</th>
+                                    <th class="border-bottom-0">Editar</th>
+                                    <th class="border-bottom-0">Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,6 +57,10 @@
                                     <td>{{ u.telefono_trabajador }}</td>
                                     <td>{{ u.fecha_nacimiento }}</td>
                                     <td>{{ u.fecha_ingreso }}</td>
+                                    <td><a class="btn btn-primary" href="{% url 'agregar-capacitacion' %}">Capacitacion</a></td>
+                                    <td><a class="btn btn-primary" href="{% url 'agregar-trabajos' u.id_trabajador %}">Trabajos Nuevos</a></td>
+                                    <td><a class="btn btn-warning" href="#">Editar</a></td>
+                                    <td><a class="btn btn-danger" href="#">Eliminar</a></td>
                                 </tr>
                                 {% endfor %}
                                 

@@ -22,6 +22,7 @@ urlpatterns = [
     #Empresas
     path('empresas/', listar_empresas, name="empresas"),
     path('agregar-empresa/', agregar_empresa, name="agregar-empresa"),
+    path('empresa-edit/<int:id_empresa>', empresa_edit, name="empresa-edit"),
     #Trabajadores
     path('trabajadores/', listar_trabajadores, name="trabajadores"),
     path('agregar-trabajador/', agregar_trabajador, name="agregar-trabajador"),
@@ -32,8 +33,9 @@ urlpatterns = [
     path('gestiones/', listar_gestiones, name="gestiones"),
     path('agregar-gestion/', agregar_gestion, name="agregar-gestion"),
     #Trabajos
-    path('trabajos/', listar_trabajos, name="trabajos"),
-    path('agregar-trabajos/', agregar_trabajos, name="agregar-trabajos"),
+    path('empresas-trabajos/', listar_empresas, name="empresas-trabajos"),
+    path('agregar-trabajos/<int:id_trabajador>', agregar_trabajos, name="agregar-trabajos"),
+    path('listado-trabajadores/<int:id_empresa>', vista_trabajadores, name="listado-trabajadores"),
     #OA
     path('oa/', listar_oa, name="oa"),
     path('agregar-oa/', agregar_oa, name="agregar-oa"),

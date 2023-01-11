@@ -18,14 +18,16 @@
                 </div>
                 <form action="" method="post">
                     {% csrf_token %}
+                    {% for trab in trabajador %}
                     <div class="control-group form-group">
                         <label class="form-label">Nombre Trabajador</label>
-                        <input type="text" class="form-control required" name="nombre_trabajador" placeholder="Nombre Trabajador">
+                        <input type="text" id="id_trabajador" value="{{ trab.nombre_trabajador }}" class="form-control required" name="id_trabajador" placeholder="Nombre Trabajador">
                     </div>
                     <div class="control-group form-group">
                         <label class="form-label">tipos de Trabajos</label>
-                        <input type="text" class="form-control required" name="tipos_trabajos" placeholder="tipos de Trabajos">
+                        <input type="text" class="form-control required" name="tipo_trabajo" placeholder="tipo de Trabajo">
                     </div>
+                    {% endfor %}
                     <button type="submit" class="btn btn-primary float-end">Guardar</button>
                 </form>
                 <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->

@@ -18,6 +18,9 @@
                 </div>
                 <form action="" method="post">
                     {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            
                     <div class="control-group form-group">
                         <label class="form-label">Empresa</label>
                         <select name="id_empresa" id="id_empresa" class="form-control required">
@@ -29,42 +32,61 @@
                         </select>
                         
                     </div>
+                        </div>
+                    <div class="col-md-6">
                     <div class="control-group form-group">
                         <label class="form-label">Nombre Trabajador</label>
                         <input type="text" class="form-control required" name="nombre_trabajador" placeholder="Nombre Trabajador">
                     </div>
+                    </div>
+                    <div class="col-md-6">
                     <div class="control-group form-group">
                         <label class="form-label">Rut Trabajador</label>
                         <input type="text" class="form-control required" name="rut_trabajador" placeholder="Rut Trabajador">
                     </div>
+                </div>
+                <div class="col-md-6">
                     <div class="control-group form-group">
                         <label class="form-label">Direcion Trabajador</label>
                         <input type="text" class="form-control required" name="direccion_trabajador" placeholder="Direcion Trabajador">
                     </div>
+                </div>
+                    <div class="col-md-6">
                     <div class="control-group form-group">
                         <label class="form-label">Email Trabajador</label>
                         <input type="text" class="form-control required" name="email_trabajador" placeholder="Email Trabajador">
                     </div>
+                </div>
+                <div class="col-md-6">
                     <div class="control-group form-group">
                         <label class="form-label">Telefono Trabajador</label>
                         <input type="text" class="form-control required" name="telefono_trabajador" placeholder="Telefono Trabajador">
                     </div>
+                </div>
+                <div class="col-md-6">
                     <div class="control-group form-group">
                         <label class="form-label">Cargo</label>
                         <input type="text" class="form-control required" name="cargo" placeholder="Cargo">
                     </div>
+                </div>
+                <div class="col-md-6">
                     <div class="control-group form-group mb-3">
                         <label class="form-label">Area</label>
                         <input type="text" class="form-control required" name="area" placeholder="Area">
                     </div>
+                </div>
+                <div class="col-md-6">
                     <div class="control-group form-group mb-3">
                         <label class="form-label">Fecha Nacimiento</label>
                         <input type="date" class="form-control required" name="fecha_nacimiento" placeholder="Fecha Nacimiento">
                     </div>
+                </div>
+                <div class="col-md-6">
                     <div class="control-group form-group mb-3">
                         <label class="form-label">Fecha Ingreso</label>
                         <input type="date" class="form-control required" name="fecha_ingreso" placeholder="Fecha Ingreso">
                     </div>
+                </div>
                     <button type="submit" class="btn btn-primary float-end">Guardar</button>
                 </form>
                 <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->

@@ -14,8 +14,8 @@
 #     'Messages': [
 #             {
 #                 "From": {
-#                     "Email": "contacto@sparemotors.cl",
-#                     "Name": "Contacto Spare Motors"
+#                     "Email": "",
+#                     "Name": ""
 #                 },
 #                 "To": destinatarios,
 #                 "TemplateID": template_id,

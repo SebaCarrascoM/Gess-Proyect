@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib import messages
 import requests
 from ...forms import *
@@ -11,7 +11,7 @@ from django.http import Http404
 
 @login_required
 def agregar_empresa(request):
-
+    
     if request.method == 'POST':
         #print(request.POST)
         result = 0
@@ -85,3 +85,25 @@ def listar_empresas(request):
     empresas = Empresa.objects.all()
     data["entity_empresa"]= empresas
     return render(request, 'app/dashboard/empresas/empresas.html', data)
+
+@login_required
+def empresa_edit(request, id_empresa):
+    empresa = Empresa.objects.filter(id_empresa = id_empresa)
+    data = {
+        'empresa':empresa
+    }
+    result = 0
+    if request.method == 'POST':
+        print(request.POST)
+        result=1
+        formulario_empresa = EmpresaForm(data = request.POST)
+        if formulario_empresa.is_valid():
+            formulario_empresa.save()
+        else:
+            result = 0
+        if result == 1:
+            messages.success(request, "Solicitud de contacto enviada correctamente.")
+            return redirect (to="empresas")
+        else:
+            messages.error(request, "error.")
+    return render(request, "app/dashboard/empresas/empresa-edit.html",data)

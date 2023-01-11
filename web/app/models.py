@@ -12,6 +12,9 @@ class Empresa(models.Model):
         managed = False
         db_table = 'empresa' 
 
+    def __str__(self):
+        return self.razon_social
+
 class AchsGestion(models.Model):
     id_achs_gestion = models.AutoField(primary_key=True)
     tipo_requisito = models.CharField(max_length=50)
@@ -223,6 +226,9 @@ class Trabajadores(models.Model):
     class Meta:
         managed = False
         db_table = 'trabajadores'
+
+    def __str__(self):
+        return self.nombre_trabajador
 
 
 class TrabajosNuevos(models.Model):

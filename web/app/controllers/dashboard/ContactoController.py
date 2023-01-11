@@ -20,10 +20,5 @@ def agregar_contacto(request):
 def listar_contactos(request):
     data = {}
     contacto_empresa = ContactoEmpresa.objects.all()
-    empresas = Empresa.objects.all()
-    data["entity_empresa"]= empresas
     data["entity_contacto"]= contacto_empresa
-    empresa = request.GET.get('empresa')
-    data_empresa = empresa
-    print(data_empresa)
     return render(request, 'app/dashboard/contacto/contactos.html',data)

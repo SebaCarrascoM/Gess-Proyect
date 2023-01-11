@@ -38,12 +38,13 @@
                             <tbody>
                                 {% for u in entity_empresa %}
                                 <tr>
+                                    
                                     <td>{{ u.razon_social }}</td>
                                     <td>{{ u.rut_empresa }}</td>
                                     <td>{{ u.direccion }}</td>
                                     <td>{{ u.ct }}</td>
                                     <td>{{ u.clave_seremi }}</td>
-                                    <td><a class="btn btn-warning" href="#">Editar</a></td>
+                                    <td><a class="btn btn-warning" href="{% url 'empresa-edit' u.id_empresa %}">Editar</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
