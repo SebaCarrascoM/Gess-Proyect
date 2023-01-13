@@ -20,10 +20,15 @@ def agregar_empresa(request):
             'rut_empresa':request.POST['rut_empresa'],
             'direccion':request.POST['direccion'],
             'ct':request.POST['ct'],
-            'clave_seremi':request.POST['clave_seremi']
+            'clave_seremi':request.POST['clave_seremi'],
+            'seguro_laboral':request.POST['seguro_laboral'],
+            'nro_trabajadores':request.POST['nro_trabajadores']
+            
         }
         formulario_empresa = EmpresaForm(data = data_empresa)
+
         if formulario_empresa.is_valid():
+
             formulario_empresa.save() 
             rut = Empresa.objects.filter(rut_empresa=request.POST['rut_empresa'])
             print(rut)
@@ -80,7 +85,7 @@ def agregar_empresa(request):
     return render(request, 'app/dashboard/empresas/agregar-empresa.html') 
 
 @login_required
-def listar_empresas(request):
+def listar_empresa(request):
     data = {}
     empresas = Empresa.objects.all()
     data["entity_empresa"]= empresas
