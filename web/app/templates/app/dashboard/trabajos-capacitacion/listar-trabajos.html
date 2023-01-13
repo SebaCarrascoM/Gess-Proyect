@@ -19,30 +19,27 @@
                             </div>
                             
                         </div>
-                        <p class="text-muted card-sub-title">En esta tabla se visualizan todos los trabajos registrados :</p>
+                        <p class="text-muted card-sub-title">En esta tabla se visualizan todos los trabajos registradas :</p>
                     </div>
                     <div class="table-responsive  export-table">
                         <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
                             <thead>
                                 <tr>
-                                    <th class="border-bottom-0">Razon Social</th>
-                                    <th class="border-bottom-0">Rut Empresa</th>
-                                    <th class="border-bottom-0">Direccion</th>
-                                    <th class="border-bottom-0">CT</th>
-                                    <th class="border-bottom-0">Clave Seremi</th>
-                                    <th class="border-bottom-0">Trabajos</th>
+                                    <th class="border-bottom-0">Empresa</th>
+                                    <th class="border-bottom-0">Trabajador</th>
+                                    <th class="border-bottom-0">Tipo Trabajo</th>
+                                    <th class="border-bottom-0">Fecha Realizacion</th>
+                                    <th class="border-bottom-0">Fecha Vencimiento</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for u in entity_empresa %}
+                                {% for u in entity_trabajos %}
                                 <tr>
-                                    
-                                    <td>{{ u.razon_social }}</td>
-                                    <td>{{ u.rut_empresa }}</td>
-                                    <td>{{ u.direccion }}</td>
-                                    <td>{{ u.ct }}</td>
-                                    <td>{{ u.clave_seremi }}</td>
-                                    <td><a class="btn btn-warning" href="{% url 'listado-trabajadores' u.id_empresa %}">Agregar Trabajos</a></td>
+                                    <td>{{ u.id_empresa }}</td>
+                                    <td>{{ u.id_trabajador }}</td>
+                                    <td>{{ u.tipo_trabajo }}</td>
+                                    <td>{{ u.fecha_realizacion }}</td>
+                                    <td>{{ u.fecha_vencimiento }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

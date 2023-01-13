@@ -9,41 +9,38 @@ from django.http import Http404
 # Create your views here.
 
 @login_required
-def agregar_protocolo(request):
-    result = 0
+def agregar_protocolo(request,id_empresa):
+    empresa= Empresa.objects.filter(id_empresa=id_empresa)
+    data= {
+        'empresa':empresa
+    }
     if request.method == 'POST':
-        print(request.POST)
-        result=1
-        formulario_protocolo = ProtocoloForm(data = request.POST)
+        result = 0
+        data_protocolo = {
+            'id_empresa': id_empresa,
+            'nombre_protocolo':request.POST['nombre_protocolo'],  
+            'requisito':request.POST['requisito'],
+            'evidencia':request.POST['evidencia'],
+            'fecha_realizacion':request.POST['fecha_realizacion'], 
+            'proxima_aplicacion':request.POST['proxima_aplicacion']     
+        }
+        formulario_protocolo = AchsGestionForm(data = data_protocolo)
         if formulario_protocolo.is_valid():
-            formulario_protocolo.save()
-        else:
-            result = 0
+            formulario_protocolo.save() 
+            result = 1
+        # login(request, user)
         if result == 1:
             messages.success(request, "Solicitud de contacto enviada correctamente.")
-            return redirect (to="trabajadores")
+            return redirect (to="trabajos")
         else:
-            messages.error(request, "error.")
-        
-    data = {}
-    empresas = Empresa.objects.all()
-    data["entity_empresa"]= empresas
-    return render(request, 'app/dashboard/protocolo/agregar-protocolo.html',data) 
+            messages.error(request, "error.")   
+
+    return render(request, 'app/dashboard/achs-gestion/agregar-gestion.html',data) 
 
 @login_required
 def listar_protocolo(request):
+    data = {}
     protocolo = Protocolo.objects.all()
-    page = request.GET.get('page', 1)
-    
-    try:
-        paginator = Paginator(protocolo, 5)
-        protocolo = paginator.page(page)
-    except:
-        raise Http404
-    
-    data = {
-        'entity': protocolo,
-        'paginator': paginator
-    }
+    data["entity_protocolo"]= protocolo
     
     return render(request, 'app/dashboard/protocolo/protocolos.html',data)

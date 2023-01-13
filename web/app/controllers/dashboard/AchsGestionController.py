@@ -9,24 +9,31 @@ from django.http import Http404
 # Create your views here.
 
 @login_required
-def agregar_gestion(request):
-    result = 0
+def agregar_gestion(request,id_empresa):
+    empresa= Empresa.objects.filter(id_empresa=id_empresa)
+    data= {
+        'empresa':empresa
+    }
     if request.method == 'POST':
-        print(request.POST)
-        result=1
-        formulario_achs_gestion = AchsGestionForm(data = request.POST)
-        if formulario_achs_gestion.is_valid():
-            formulario_achs_gestion.save()
-        else:
-            result = 0
+        result = 0
+        data_gestion = {
+            'id_empresa': id_empresa,
+            'tipo_requisito':request.POST['tipo_requisito'],  
+            'accion':request.POST['accion'],
+            'fecha_vencimiento':request.POST['fecha_vencimiento'],
+            'observaciones':request.POST['observaciones']           
+        }
+        formulario_gestion = AchsGestionForm(data = data_gestion)
+        if formulario_gestion.is_valid():
+            formulario_gestion.save() 
+            result = 1
+        # login(request, user)
         if result == 1:
             messages.success(request, "Solicitud de contacto enviada correctamente.")
-            return redirect (to="trabajadores")
+            return redirect (to="trabajos")
         else:
-            messages.error(request, "error.")
-    data = {}
-    empresas = Empresa.objects.all()
-    data["entity_empresa"]= empresas
+            messages.error(request, "error.")   
+
     return render(request, 'app/dashboard/achs-gestion/agregar-gestion.html',data) 
 
 @login_required

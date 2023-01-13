@@ -20,21 +20,17 @@
                     {% csrf_token %}
                     <div class="control-group form-group">
                         <label class="form-label">Empresa</label>
-                        <select name="empresa" id="id_empresa" class="form-control required">
-                            <option value="0">Seleccionar</option>
-                            {% for item in entity_empresa %}
-                                <option value="{{ item.id_empresa }}">{{ item.razon_social }}</option>
-                        <!--<input type="text" class="form-control required" name="empresa" placeholder="Empresa">-->
+                            {% for item in empresa %}
+                                {{ item.razon_social }}
                             {% endfor %}
-                        </select>
                     </div>
                     <div class="control-group form-group">
                         <label class="form-label">Nombre Protocolo</label>
                         <input type="text" class="form-control required" name="nombre_protocolo" placeholder="Nombre Protocolo">
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Requisisto</label>
-                        <input type="text" class="form-control required" name="Requisisto" placeholder="Requisisto">
+                        <label class="form-label">Requisito</label>
+                        <input type="text" class="form-control required" name="requisito" placeholder="Requisito">
                     </div>
                     <div class="control-group form-group">
                         <label class="form-label">Evidencia</label>

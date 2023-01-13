@@ -38,9 +38,8 @@
                             <tbody>
                                 {% for u in entity_oa %}
                                 <tr>
-                                    {% for emp in u.id_empresa.all %}
-                                        <td>{{ emp.razon_social }}</td>
-                                    {% endfor %}
+                                    
+                                    <td>{{ u.id_empresa }}</td>
                                     <td>{{ u.usuario_web }}</td>
                                     <td>{{ u.clave_web }}</td>
                                     <td>{{ u.asesor_oa }}</td>

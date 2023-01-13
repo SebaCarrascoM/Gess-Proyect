@@ -23,16 +23,22 @@
                         </div>
                         <p class="text-muted card-sub-title">En esta tabla se visualizan todos los empresas registradas :</p>
                     </div>
-                    <div class="table-responsive  export-table">
-                        <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
+                    <div class="table-responsive-xxl">
+                        <table id="file-datatable" class="table align-middle">
                             <thead>
                                 <tr>
                                     <th class="border-bottom-0">Razon Social</th>
                                     <th class="border-bottom-0">Rut Empresa</th>
                                     <th class="border-bottom-0">Direccion</th>
-                                    <th class="border-bottom-0">CT</th>
+                                    <th class="border-bottom-0">Central</th>
+                                    <th class="border-bottom-0">Seguro Laboral</th>
+                                    <th class="border-bottom-0">Nro Trabajadores</th>
                                     <th class="border-bottom-0">Clave Seremi</th>
+                                    <th class="border-bottom-0">Agregar Trabajador</th>
+                                    <th class="border-bottom-0">Agregar Protocolo</th>
+                                    <th class="border-bottom-0">Agregar ACHS Gestion</th>
                                     <th class="border-bottom-0">Editar</th>
+                                    <th class="border-bottom-0">Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,8 +49,14 @@
                                     <td>{{ u.rut_empresa }}</td>
                                     <td>{{ u.direccion }}</td>
                                     <td>{{ u.ct }}</td>
+                                    <td>{{ u.seguro_laboral }}</td>
+                                    <td>{{ u.nro_trabajadores }}</td>
                                     <td>{{ u.clave_seremi }}</td>
+                                    <td><a class="btn btn-primary" href="{% url 'agregar-trabajador' u.id_empresa %}">Nuevo Trabajador</a></td>
+                                    <td><a class="btn btn-primary" href="{% url 'agregar-protocolo' u.id_empresa %}">Nuevo Protocolo</a></td>
+                                    <td><a class="btn btn-primary" href="{% url 'agregar-gestion' u.id_empresa %}">Nuevo ACHS Gestion</a></td>
                                     <td><a class="btn btn-warning" href="{% url 'empresa-edit' u.id_empresa %}">Editar</a></td>
+                                    <td><a class="btn btn-danger" href="{#}">Eliminar</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

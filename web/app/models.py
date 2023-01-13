@@ -1,20 +1,5 @@
 from django.db import models
 
-class Empresa(models.Model):
-    id_empresa = models.AutoField(primary_key=True)
-    razon_social = models.CharField(max_length=50)
-    rut_empresa = models.CharField(max_length=13)
-    direccion = models.CharField(max_length=50)
-    ct = models.CharField(max_length=50)
-    clave_seremi = models.CharField(max_length=50)
-
-    class Meta:
-        managed = False
-        db_table = 'empresa' 
-
-    def __str__(self):
-        return self.razon_social
-
 class AchsGestion(models.Model):
     id_achs_gestion = models.AutoField(primary_key=True)
     tipo_requisito = models.CharField(max_length=50)
@@ -34,11 +19,25 @@ class ArchivoEmpresa(models.Model):
     fecha_apliacion = models.CharField(max_length=50)
     fecha_vencimiento = models.DateField()
     observaciones = models.TextField()
+    fecha_expedicion = models.DateField()
     id_empresa = models.ForeignKey('Empresa', models.DO_NOTHING, db_column='id_empresa')
 
     class Meta:
         managed = False
         db_table = 'archivo_empresa'
+
+
+class ArchivoTrabajadores(models.Model):
+    id_archivo_trabajador = models.AutoField(primary_key=True)
+    id_trabajador = models.ForeignKey('Trabajadores', models.DO_NOTHING, db_column='id_trabajador')
+    id_empresa = models.ForeignKey('Empresa', models.DO_NOTHING, db_column='id_empresa')
+    tipo_archivo = models.CharField(max_length=50)
+    fecha_expedicion = models.DateField()
+    fecha_vencimiento = models.DateField()
+
+    class Meta:
+        managed = False
+        db_table = 'archivo_trabajadores'
 
 
 class AuthGroup(models.Model):
@@ -112,8 +111,11 @@ class AuthUserUserPermissions(models.Model):
 
 class Capacitacion(models.Model):
     id_capacitacion = models.AutoField(primary_key=True)
+    id_empresa = models.ForeignKey('Empresa', models.DO_NOTHING, db_column='id_empresa')
     id_trabajador = models.ForeignKey('Trabajadores', models.DO_NOTHING, db_column='id_trabajador')
     tipo_capacitacion = models.CharField(max_length=50)
+    fecha_realizacion = models.DateField()
+    fecha_vencimiento = models.DateField()
 
     class Meta:
         managed = False
@@ -127,9 +129,8 @@ class ContactoEmpresa(models.Model):
     cargo_contacto = models.CharField(max_length=50)
     telefono_contacto = models.CharField(max_length=13)
     correo = models.CharField(max_length=50)
-    id_empresa = models.ForeignKey(Empresa, models.DO_NOTHING, db_column='id_empresa')
-    
-    
+    id_empresa = models.ForeignKey('Empresa', models.DO_NOTHING, db_column='id_empresa')
+
     class Meta:
         managed = False
         db_table = 'contacto_empresa'
@@ -180,16 +181,32 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
+class Empresa(models.Model):
+    id_empresa = models.AutoField(primary_key=True)
+    razon_social = models.CharField(max_length=50)
+    rut_empresa = models.CharField(max_length=13)
+    direccion = models.CharField(max_length=50)
+    ct = models.CharField(max_length=50)
+    clave_seremi = models.CharField(max_length=50)
+    seguro_laboral = models.CharField(max_length=50)
+    nro_trabajadores = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'empresa'
+    
+    def __str__(self):
+        return self.razon_social
 
 
 class Oa(models.Model):
     id_oa = models.AutoField(primary_key=True)
+    id_empresa = models.ForeignKey(Empresa, models.DO_NOTHING, db_column='id_empresa')
     usuario_web = models.CharField(max_length=50)
     clave_web = models.CharField(max_length=50)
     asesor_oa = models.CharField(max_length=50)
-    telefono = models.CharField(max_length=14)
+    telefono = models.CharField(max_length=50)
     correo_oa = models.CharField(max_length=50)
-    id_empresa = models.ForeignKey(Empresa, models.DO_NOTHING, db_column='id_empresa')
 
     class Meta:
         managed = False
@@ -231,11 +248,14 @@ class Trabajadores(models.Model):
         return self.nombre_trabajador
 
 
-class TrabajosNuevos(models.Model):
-    id_trabajos_nuevos = models.AutoField(primary_key=True)
+class Trabajos(models.Model):
+    id_trabajos = models.AutoField(primary_key=True)
+    id_empresa = models.ForeignKey(Empresa, models.DO_NOTHING, db_column='id_empresa')
     id_trabajador = models.ForeignKey(Trabajadores, models.DO_NOTHING, db_column='id_trabajador')
     tipo_trabajo = models.CharField(max_length=50)
+    fecha_realizacion = models.DateField()
+    fecha_vencimiento = models.DateField()
 
     class Meta:
         managed = False
-        db_table = 'trabajos_nuevos'
+        db_table = 'trabajos'

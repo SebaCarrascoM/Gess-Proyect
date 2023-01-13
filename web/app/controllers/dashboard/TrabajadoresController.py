@@ -9,25 +9,38 @@ from django.http import Http404
 # Create your views here.
 
 @login_required
-def agregar_trabajador(request):
+def agregar_trabajador(request, id_empresa):
+    empresa= Empresa.objects.filter(id_empresa= id_empresa)
+    data = {
+        'empresa':empresa
+    }
     result = 0
     if request.method == 'POST':
-        print(request.POST)
-        result=1
-        formulario_trabajador = TrabajadoresForm(data = request.POST)
+        #print(request.POST)
+        result = 0
+        data_trabajador = {
+            'id_empresa': id_empresa,
+            'nombre_trabajador':request.POST['nombre_trabajador'],
+            'rut_trabajador':request.POST['rut_trabajador'],
+            'cargo':request.POST['cargo'],
+            'area':request.POST['area'],
+            'telefono_trabajador':request.POST['telefono_trabajador'],
+            'email_trabajador':request.POST['email_trabajador'],
+            'fecha_nacimiento':request.POST['fecha_nacimiento'] ,
+            'fecha_ingreso':request.POST['fecha_ingreso'],
+            'direccion_trabajador':request.POST['direccion_trabajador']             
+        }
+        formulario_trabajador = TrabajadoresForm(data = data_trabajador)
         if formulario_trabajador.is_valid():
-            formulario_trabajador.save()
-        else:
-            result = 0
+            formulario_trabajador.save() 
+            result = 1
+            # login(request, user)
         if result == 1:
             messages.success(request, "Solicitud de contacto enviada correctamente.")
-            return redirect (to="trabajadores")
+            return redirect (to="trabajos")
         else:
             messages.error(request, "error.")
 
-    data = {}
-    empresas = Empresa.objects.all()
-    data["entity_empresa"]= empresas
     return render(request, 'app/dashboard/trabajadores/agregar-trabajador.html',data) 
 
 @login_required

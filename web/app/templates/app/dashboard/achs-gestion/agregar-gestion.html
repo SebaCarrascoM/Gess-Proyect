@@ -20,17 +20,13 @@
                     {% csrf_token %}
                     <div class="control-group form-group">
                         <label class="form-label">Empresa</label>
-                        <select name="empresa" id="id_empresa" class="form-control required">
-                            <option value="0">Seleccionar</option>
-                            {% for item in entity_empresa %}
-                                <option value="{{ item.id_empresa }}">{{ item.razon_social }}</option>
-                        <!--<input type="text" class="form-control required" name="empresa" placeholder="Empresa">-->
-                            {% endfor %}
-                        </select>
+                        {% for item in empresa %}
+                            {{ item.razon_social }}
+                        {% endfor %}
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Tipo Requisisto</label>
-                        <input type="text" class="form-control required" name="tipo_requisisto" placeholder="Tipo Requisisto">
+                        <label class="form-label">Tipo Requisito</label>
+                        <input type="text" class="form-control required" name="tipo_requisito" placeholder="Tipo Requisito">
                     </div>
                     <div class="control-group form-group">
                         <label class="form-label">Accion</label>
@@ -38,7 +34,7 @@
                     </div>
                     <div class="control-group form-group">
                         <label class="form-label">Fecha Vencimiento</label>
-                        <input type="text" class="form-control required" name="fecha_vencimiento" placeholder="Fecha Vencimiento">
+                        <input type="date" class="form-control required" name="fecha_vencimiento" placeholder="Fecha Vencimiento">
                     </div>
                     <div class="control-group form-group">
                         <label class="form-label">Observaciones</label>

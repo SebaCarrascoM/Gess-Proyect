@@ -53,7 +53,7 @@
                                     <td>{{ u.telefono_trabajador }}</td>
                                     <td>{{ u.fecha_nacimiento }}</td>
                                     <td>{{ u.fecha_ingreso }}</td>
-                                    <td><a class="btn btn-primary" href="{% url 'agregar-capacitacion' %}">Capacitacion</a></td>
+                                    <td><a class="btn btn-primary" href="{% url 'agregar-capacitacion' u.id_trabajador %}">Capacitacion</a></td>
                                     <td><a class="btn btn-primary" href="{% url 'agregar-trabajos' u.id_trabajador %}">Trabajos Nuevos</a></td>
                                 </tr>
                                 {% endfor %}

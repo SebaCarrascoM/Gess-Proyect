@@ -16,16 +16,32 @@
                 <div class="main-content-label mg-b-5 mb-4">
                     Agregar una nueva Capacitacion
                 </div>
+                {% for u in empresa %}
+                <div class="col justify-content-end d-flex">
+                    <a href="{% url 'listado-trabajadores' u.id_empresa %}" class="btn btn-primary">Volver</a>
+                </div>
+                {% endfor %}
                 <form action="" method="post">
                     {% csrf_token %}
+                    {% for trab in trabajador %}
+                    <div class="main-content-label mg-b-5 mb-1">
+                        <p>{{ trab.nombre_trabajador }}</p>
+                        
+                    </div>
+                    
                     <div class="control-group form-group">
-                        <label class="form-label">Nombre Trabajador</label>
-                        <input type="text" class="form-control required" name="nombre_trabajador" placeholder="Nombre Trabajador">
+                        <label class="form-label">tipos de Capacitacion</label>
+                        <input type="text" class="form-control required" name="tipo_capacitacion" placeholder="tipo de capacitacion">
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Tipo de Capacitacion</label>
-                        <input type="text" class="form-control required" name="tipos_capacitacion" placeholder="Tipo de Capacitacion">
+                        <label class="form-label">Fecha Realizacion</label>
+                        <input type="date" class="form-control required" name="fecha_realizacion" placeholder="fecha realizacion">
                     </div>
+                    <div class="control-group form-group">
+                        <label class="form-label">Fecha Vencimiento</label>
+                        <input type="date" class="form-control required" name="fecha_vencimiento" placeholder="fecha vencimiento">
+                    </div>
+                    {% endfor %}
                     <button type="submit" class="btn btn-primary float-end">Guardar</button>
                 </form>
                 <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->

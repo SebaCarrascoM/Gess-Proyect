@@ -49,7 +49,7 @@ class TrabajadoresForm(forms.ModelForm):
         model = Trabajadores
         fields = "__all__"
 
-class TrabajosNuevosForm(forms.ModelForm):
+class TrabajosForm(forms.ModelForm):
     class Meta:
-        model = TrabajosNuevos
+        model = Trabajos
         fields = "__all__"

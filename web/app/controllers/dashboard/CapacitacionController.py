@@ -15,7 +15,7 @@ def agregar_capacitacion(request):
         print(request.POST)
         
 
-    return render(request, 'app/dashboard/capacitacion/agregar-capacitacion.html') 
+    return render(request, 'app/dashboard/trabajos-capacitacion/agregar-capacitacion.html') 
 
 @login_required
 def listar_capacitacion(request):
@@ -33,4 +33,4 @@ def listar_capacitacion(request):
         'paginator': paginator
     }
     
-    return render(request, 'app/dashboard/capacitacion/capacitaciones.html',data)
+    return render(request, 'app/dashboard/trabajos-capacitacion/capacitaciones.html',data)
