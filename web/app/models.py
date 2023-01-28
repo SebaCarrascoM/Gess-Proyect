@@ -15,16 +15,23 @@ class AchsGestion(models.Model):
 
 class ArchivoEmpresa(models.Model):
     id_documento_empresa = models.AutoField(primary_key=True)
-    documentos = models.CharField(max_length=100)
-    fecha_apliacion = models.CharField(max_length=50)
+    documento_empresa = models.FileField(upload_to='documentos_empresa/',max_length=250)
     fecha_vencimiento = models.DateField()
-    observaciones = models.TextField()
+    observaciones = models.CharField(max_length=50)
     fecha_expedicion = models.DateField()
     id_empresa = models.ForeignKey('Empresa', models.DO_NOTHING, db_column='id_empresa')
+    tipo_documento = models.CharField(max_length=50)
 
     class Meta:
         managed = False
         db_table = 'archivo_empresa'
+
+    def __str__(self):
+        return f'{self.documento_empresa}'
+    
+    def delete(self, *args, **kwargs):
+        self.documento_empresa.delete()
+        super().delete(*args,**kwargs)
 
 
 class ArchivoTrabajadores(models.Model):
@@ -34,6 +41,7 @@ class ArchivoTrabajadores(models.Model):
     tipo_archivo = models.CharField(max_length=50)
     fecha_expedicion = models.DateField()
     fecha_vencimiento = models.DateField()
+    documento_trabajador = models.FileField(upload_to='documentos_trabajador/', null=True, blank=True, max_length=250)
 
     class Meta:
         managed = False

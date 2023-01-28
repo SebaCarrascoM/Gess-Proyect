@@ -15,35 +15,35 @@
                     <div>
                         <div class="row">
                             <div class="col">
-                                <h6 class="main-content-label mb-1">OA Registrados</h6>
+                                <h6 class="main-content-label mb-1">Contactos Registrados</h6>
                             </div>
                         </div>
-                        <p class="text-muted card-sub-title">En esta tabla se visualizan todos los OA registrados :</p>
+                        <p class="text-muted card-sub-title">En esta tabla se visualizan todos los Contactos registrados :</p>
                     </div>
                     <div class="table-responsive  export-table">
                         <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
                             <thead>
                                 <tr>
                                     <th class="border-bottom-0">Empresa</th>
-                                    <th class="border-bottom-0">Usuarios Web</th>
-                                    <th class="border-bottom-0">Clave Web</th>
-                                    <th class="border-bottom-0">Asesor OA</th>
-                                    <th class="border-bottom-0">Telefono OA</th> 
-                                    <th class="border-bottom-0">Correo OA</th>
+                                    <th class="border-bottom-0">Tipo Documento</th>
+                                    <th class="border-bottom-0">Archivos</th>
+                                    <th class="border-bottom-0">Observaciones</th>
+                                    <th class="border-bottom-0">Fecha Expedicion</th>
+                                    <th class="border-bottom-0">Fecha Vencimiento</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for u in entity_oa %}
-                                <tr>
-                                    
-                                    <td>{{ u.id_empresa }}</td>
-                                    <td>{{ u.usuario_web }}</td>
-                                    <td>{{ u.clave_web }}</td>
-                                    <td>{{ u.asesor_oa }}</td>
-                                    <td>{{ u.telefono }}</td>
-                                    <td>{{ u.correo_oa }}</td>
+                                {% for u in entity_archivo %}
+                                <tr>                                    
+                                    <td>{{ u.id_empresa }}</td> 
+                                    <td>{{ u.tipo_documento }}</td> 
+                                    <td><a href="{{ u.documento_empresa }}" target="_blank">Ver Archivo</a></td>
+                                    <td>{{ u.observaciones }}</td>
+                                    <td>{{ u.fecha_vencimiento }}</td>
+                                    <td>{{ u.fecha_expedicion }}</td>                                                         
                                 </tr>
                                 {% endfor %}
+                            
                             </tbody>
                         </table>
                     </div>

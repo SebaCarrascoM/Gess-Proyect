@@ -8,6 +8,8 @@ from .controllers.dashboard.AchsGestionController import *
 from .controllers.dashboard.TrabajosCapacitacionController import *
 from .controllers.dashboard.OAController import *
 from .controllers.dashboard.ProtocoloController import *
+from .controllers.dashboard.CalendarioController import *
+from .controllers.dashboard.ArchivoEmpresaController import *
 
 urlpatterns = [
     #Home
@@ -15,6 +17,7 @@ urlpatterns = [
     path('sobre-nosotros/', about , name="about"),
     path('contacto/', contacto , name="contacto"),
     path('inicio/', inicio , name="inicio"),
+    path('calendario/', calendario , name="calendario"),
     # Usuarios
     path('usuarios/', listar_usuarios, name="usuarios"),
     path('agregar-usuario/', agregar_usuario, name="agregar-usuario"),
@@ -27,7 +30,6 @@ urlpatterns = [
     path('agregar-trabajador/<int:id_empresa>', agregar_trabajador, name="agregar-trabajador"),
     #Contacto
     path('contactos/', listar_contactos, name="contactos"),
-    path('agregar-contacto/', agregar_contacto, name="agregar-contacto"),
     #AchsGestion
     path('gestiones/', listar_gestiones, name="gestiones"),
     path('agregar-gestion/<int:id_empresa>', agregar_gestion, name="agregar-gestion"),
@@ -40,8 +42,10 @@ urlpatterns = [
     path('capacitacion/', listar_capacitacion, name="capacitacion"),
     #OA
     path('oa/', listar_oa, name="oa"),
-    path('agregar-oa/', agregar_oa, name="agregar-oa"),
     #Protocolo
     path('protocolo/', listar_protocolo, name="protocolo"),
     path('agregar-protocolo/<int:id_empresa>', agregar_protocolo, name="agregar-protocolo"),
+    #ArchivosEmpresa
+    path('agregar-archivo-empresa/<int:id_empresa>', agregar_archivo_empresa, name="agregar-archivo-empresa"),
+    path('archivos/', listar_archivos, name="archivos"),
 ]

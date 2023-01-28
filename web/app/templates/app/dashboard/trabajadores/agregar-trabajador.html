@@ -16,7 +16,7 @@
                 <div class="main-content-label mg-b-5 mb-4">
                     Agregar un nuevo Trabajador para la 
                 </div>
-                <form action="" method="post">
+                <form id="formEmpresaRegistro" action="" method="post">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6">
@@ -41,7 +41,12 @@
                     <div class="col-md-6">
                     <div class="control-group form-group">
                         <label class="form-label">Rut Trabajador</label>
-                        <input type="text" class="form-control required" name="rut_trabajador" placeholder="Rut Trabajador">
+                        <input type="text" class="form-control required" id="rut" name="rut_trabajador" onkeypress="return isNumber(event)" oninput="checkRut(this)" placeholder="Rut Trabajador">
+                        <a id="alerta" role="alert">
+                            <span id="mensaje">
+                                Ingrese un RUT.
+                            </span>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -86,7 +91,7 @@
                         <input type="date" class="form-control required" name="fecha_ingreso" placeholder="Fecha Ingreso">
                     </div>
                 </div>
-                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                    <button type="submit" id="btnRegistrar" class="btn btn-primary float-end">Guardar</button>
                 </form>
                 <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->
             </div>
@@ -110,6 +115,7 @@
 <!--Internal Fileuploads js-->
 <script src="{% static 'assets/dashboard/plugins/fileuploads/js/fileupload.js' %}"></script>
 <script src="{% static 'assets/dashboard/plugins/fileuploads/js/file-upload.js' %}"></script>
+<script src="{% static 'assets/dashboard/js/validaRutEmpresa.js' %}"></script>
 
 <!--Internal Fancy uploader js-->
 <script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.ui.widget.js' %}"></script>
@@ -117,4 +123,13 @@
 <script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.iframe-transport.js' %}"></script>
 <script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.fancy-fileupload.js' %}"></script>
 <script src="{% static 'assets/dashboard/plugins/fancyuploder/fancy-uploader.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $('#btnRegistrar').on('click', function () {
+            $('#formEmpresaRegistro').submit();
+
+        });
+    });
+</script>
+        
 {% endblock %}

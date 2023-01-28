@@ -10,13 +10,6 @@ from django.http import Http404
 # Create your views here.
 
 @login_required
-def agregar_contacto(request):
-    if request.method == 'POST':
-        print(request.POST)
-        
-
-    return render(request, 'app/dashboard/contacto/agregar-contacto.html') 
-@login_required
 def listar_contactos(request):
     data = {}
     contacto_empresa = ContactoEmpresa.objects.all()

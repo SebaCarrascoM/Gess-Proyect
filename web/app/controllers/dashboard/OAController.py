@@ -9,15 +9,6 @@ from django.http import Http404
 # Create your views here.
 
 @login_required
-def agregar_oa(request):
-
-    if request.method == 'POST':
-        print(request.POST)
-        
-
-    return render(request, 'app/dashboard/oa/agregar-oa.html') 
-
-@login_required
 def listar_oa(request):
     data = {}
     oa = Oa.objects.all()

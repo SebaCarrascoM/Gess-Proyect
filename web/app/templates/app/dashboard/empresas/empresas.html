@@ -37,6 +37,7 @@
                                     <th class="border-bottom-0">Agregar Trabajador</th>
                                     <th class="border-bottom-0">Agregar Protocolo</th>
                                     <th class="border-bottom-0">Agregar ACHS Gestion</th>
+                                    <th class="border-bottom-0">Agregar Archivo</th>
                                     <th class="border-bottom-0">Editar</th>
                                     <th class="border-bottom-0">Eliminar</th>
                                 </tr>
@@ -55,6 +56,7 @@
                                     <td><a class="btn btn-primary" href="{% url 'agregar-trabajador' u.id_empresa %}">Nuevo Trabajador</a></td>
                                     <td><a class="btn btn-primary" href="{% url 'agregar-protocolo' u.id_empresa %}">Nuevo Protocolo</a></td>
                                     <td><a class="btn btn-primary" href="{% url 'agregar-gestion' u.id_empresa %}">Nuevo ACHS Gestion</a></td>
+                                    <td><a class="btn btn-primary" href="{% url 'agregar-archivo-empresa' u.id_empresa %}">Nuevo Archivo</a></td>
                                     <td><a class="btn btn-warning" href="{% url 'empresa-edit' u.id_empresa %}">Editar</a></td>
                                     <td><a class="btn btn-danger" href="{#}">Eliminar</a></td>
                                 </tr>

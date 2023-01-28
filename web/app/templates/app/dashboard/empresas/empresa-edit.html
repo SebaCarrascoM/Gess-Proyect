@@ -16,7 +16,7 @@
                 <div class="main-content-label mg-b-5 mb-4">
                     Editar Empresa
                 </div>
-                <form method="post" >
+                <form id="formEmpresaRegistro" method="post" >
                     {% csrf_token %}
                     {% for emp in empresa %}
                     <div class="row">
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary float-end">Guardar</button>
+                    <button type="button" id="btnRegistrar" class="btn btn-primary float-end">Guardar</button>
                 </div>
                 {% endfor %}
                 
@@ -97,29 +97,11 @@
 <script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.iframe-transport.js' %}"></script>
 <script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.fancy-fileupload.js' %}"></script>
 <script src="{% static 'assets/dashboard/plugins/fancyuploder/fancy-uploader.js' %}"></script>
-<!--<script>
+<script>
 $(document).ready(function () {
     $('#btnRegistrar').on('click', function () {
-        //datos contacto
-        const nombre_contacto = $('[name="nombre_contacto"]').val();
-        const rut_contacto = $('[name="rut_contacto"]').val();
-        const cargo_contacto = $('[name="cargo_contacto"]').val();
-        const telefono_contacto = $('[name="telefono_contacto"]').val();
-        const email_contacto = $('[name="correo"]').val();
-        if (nombre_contacto == "" && rut_contacto == "" && cargo_contacto == "" && telefono_contacto == "" && email_contacto == "") {
-            $('[name="valida_contacto"]').val(0);
-        }
-        const usuario_web = $('[name="usuario_web"]').val();
-        const clave_web = $('[name="clave_web"]').val();
-        const asesor_oa = $('[name="asesor_oa"]').val();
-        const telefono = $('[name="telefono"]').val();
-        const correo_oa = $('[name="correo_oa"]').val();
-        if (usuario_web == "" && clave_web == "" && asesor_oa == "" && telefono == "" && correo_oa == "") {
-            $('[name="valida_oa"]').val(0);
-        }
-
         $('#formEmpresaRegistro').submit();
     });
 });
-</script>-->
+</script>
 {% endblock %}

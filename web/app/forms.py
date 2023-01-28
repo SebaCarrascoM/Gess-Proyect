@@ -27,7 +27,7 @@ class AchsGestionForm(forms.ModelForm):
 class ArchivoEmpresaForm(forms.ModelForm):
     class Meta:
         model = ArchivoEmpresa
-        fields = "__all__"
+        fields = "__all__" 
 
 class CapacitacionForm(forms.ModelForm):
     class Meta:

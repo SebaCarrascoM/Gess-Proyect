@@ -22,43 +22,48 @@
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Razon Social</label>
-                                <input type="text" class="form-control required" name="razon_social" placeholder="Razon Social">
+                                <input type="text" class="form-control required" maxlength="80" name="razon_social" placeholder="Razon Social">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Rut Empresa</label>
-                                <input type="text" class="form-control required" name="rut_empresa" placeholder="Rut Empresa">
+                                <input type="text" class="form-control required" id="rutempresa" name="rut_empresa" onkeypress="return isNumber(event)" oninput="checkRutEmpresa(this)" placeholder=" Ingrese el Rut Empresa" required>
+                                    <a id="alertaempresa" role="alert">
+                                        <span id="mensajeempresa">
+                                            Ingrese un RUT.
+                                        </span>
+                                    </a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Direccion</label>
-                                <input type="text" class="form-control required" name="direccion" placeholder="Direccion">
+                                <input type="text" class="form-control required" maxlength="50" name="direccion" placeholder="Direccion" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">CT</label>
-                                <input type="text" class="form-control required" name="ct" placeholder="CT">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="control-group form-group">
-                                <label class="form-label">Clave Seremi</label>
-                                <input type="text" class="form-control required" name="clave_seremi" placeholder="Clave Seremi">
+                                <input type="text" class="form-control required" name="ct" placeholder="CT" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Seguro Laboral</label>
-                                <input type="text" class="form-control required" name="seguro_laboral" placeholder="Seguro Laboral">
+                                <input type="text" class="form-control required" name="seguro_laboral" placeholder="Seguro Laboral" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Nro Trabajadores</label>
-                                <input type="number" class="form-control required" name="nro_trabajadores" placeholder="Nro Trabajadores">
+                                <input type="number" class="form-control required" name="nro_trabajadores" placeholder="Nro Trabajadores" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="control-group form-group">
+                                <label class="form-label">Clave Seremi</label>
+                                <input type="text" class="form-control required" name="clave_seremi" placeholder="Clave Seremi" required>
                             </div>
                         </div>
                     </div>
@@ -71,32 +76,37 @@
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Nombre Contacto</label>
-                                <input type="text" class="form-control required" name="nombre_contacto" placeholder="Nombre Contacto">
+                                <input type="text" class="form-control required" name="nombre_contacto" placeholder="Nombre Contacto" required>
                                 <input type="text" class="form-control d-none" value="1" name="valida_contacto">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Rut Contacto</label>
-                                <input type="text" class="form-control required" name="rut_contacto" placeholder="Rut Contacto">
+                                <input type="text" class="form-control required" id="rut" name="rut_contacto" onkeypress="return isNumber(event)" oninput="checkRut(this)"  placeholder="Ingrese el Rut Contacto" required>
+                                <a id="alerta" role="alert">
+                                    <span id="mensaje">
+                                        Ingrese un RUT.
+                                    </span>
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group mb-3">
                                 <label class="form-label">Telefono Contacto</label>
-                                <input type="text" class="form-control required" name="telefono_contacto" placeholder="Telefono Contacto">
+                                <input type="text" class="form-control required" name="telefono_contacto" placeholder="Telefono Contacto" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group mb-3">
                                 <label class="form-label">Cargo Contacto</label>
-                                <input type="text" class="form-control required" name="cargo_contacto" placeholder="Cargo Contacto">
+                                <input type="text" class="form-control required" name="cargo_contacto" placeholder="Cargo Contacto" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group mb-3">
                                 <label class="form-label">Correo Contacto</label>
-                                <input type="text" class="form-control required" name="correo" placeholder="Correo Contacto">
+                                <input type="text" class="form-control required" name="correo" placeholder="Correo Contacto" required>
                             </div>
                         </div>
                     </div>
@@ -109,36 +119,36 @@
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Usuarios Web</label>
-                                <input type="text" class="form-control required" name="usuario_web" placeholder="Usuarios Web">
+                                <input type="text" class="form-control required" name="usuario_web" placeholder="Usuarios Web" required>
                                 <input type="text" class="form-control d-none" value="1" name="valida_oa">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Clave Web</label>
-                                <input type="text" class="form-control required" name="clave_web" placeholder="Clave Web">
+                                <input type="text" class="form-control required" name="clave_web" placeholder="Clave Web" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Asesor OA</label>
-                                <input type="text" class="form-control required" name="asesor_oa" placeholder="Asesor OA">
+                                <input type="text" class="form-control required" name="asesor_oa" placeholder="Asesor OA" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Telefono OA</label>
-                                <input type="text" class="form-control required" name="telefono" placeholder="Telefono">
+                                <input type="text" class="form-control required" name="telefono" placeholder="Telefono" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="control-group form-group">
                                 <label class="form-label">Correo OA</label>
-                                <input type="text" class="form-control required" name="correo_oa" placeholder="Correo OA">
+                                <input type="text" class="form-control required" name="correo_oa" placeholder="Correo OA" required>
                             </div>
                         </div>
                     </div>
-                    <button type="button" id="btnRegistrar" class="btn btn-primary float-end">Guardar</button>
+                    <button type="submit" id="btnRegistrar" class="btn btn-primary float-end">Guardar</button>
                 </form>
                 <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->
             </div>
@@ -158,6 +168,7 @@
 <script src="{% static 'assets/dashboard/plugins/parsleyjs/parsley.min.js' %}"></script>
 <!--Internal  Form-wizard js -->
 <script src="{% static 'assets/dashboard/js/form-wizard.js' %}"></script>
+<script src="{% static 'assets/dashboard/js/validaRutEmpresa.js' %}"></script>
 
 <!--Internal Fileuploads js-->
 <script src="{% static 'assets/dashboard/plugins/fileuploads/js/fileupload.js' %}"></script>
