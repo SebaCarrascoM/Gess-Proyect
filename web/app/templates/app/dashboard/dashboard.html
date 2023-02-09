@@ -446,7 +446,6 @@
 									<span class="side-menu__label">Trabajadores</span><i class="angle fe fe-chevron-right"></i></a>
 									<ul class="slide-menu">
 										<li><a class="slide-item" href="{% url 'trabajadores' %}">Ver Trabajadores</a></li>
-										<li><a class="slide-item" href="{% url 'empresas-trabajos' %}">Agregar Trabajos-Capacitacion</a></li>
 										<li><a class="slide-item" href="{% url 'trabajos' %}">Ver Trabajos</a></li>
 										<li><a class="slide-item" href="{% url 'capacitacion' %}">Ver Capacitaciones</a></li>
 									</ul>
@@ -546,6 +545,16 @@
                         "title": "Advertencia",
                         "text": "{{ m }}",
                         "icon": "warning"
+                    })
+                </script>
+
+			{% elif m.tags == "info" %}
+                <script>
+
+                    Swal.fire({
+                        "title": "Informacion",
+                        "text": "{{ m }}",
+                        "icon": "info"
                     })
                 </script>
             {% endif %}

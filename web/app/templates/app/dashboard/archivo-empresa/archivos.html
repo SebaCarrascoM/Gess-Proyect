@@ -30,6 +30,7 @@
                                     <th class="border-bottom-0">Observaciones</th>
                                     <th class="border-bottom-0">Fecha Expedicion</th>
                                     <th class="border-bottom-0">Fecha Vencimiento</th>
+                                    <th class="border-bottom-0">a</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,11 +40,19 @@
                                     <td>{{ u.tipo_documento }}</td> 
                                     <td><a href="{{ u.documento_empresa }}" target="_blank">Ver Archivo</a></td>
                                     <td>{{ u.observaciones }}</td>
-                                    <td>{{ u.fecha_vencimiento }}</td>
-                                    <td>{{ u.fecha_expedicion }}</td>                                                         
-                                </tr>
-                                {% endfor %}
+                                    <td>{{ u.fecha_expedicion }}</td>                                    
+                                    {% if u.fecha_vencimiento >= fecha_hoy %}
+                                        <td id="fecha_vencimiento" style="background-color: #7CFC00">{{ u.fecha_vencimiento }} </td>
+                                        <td>{{ u.dias_restantes }} Dias para Vencer</td>                                     
+                                    {% else %}
+                                        <td id="fecha_invalidada" style="background-color: #FF4500">{{ u.fecha_vencimiento }}</td>
+                                        <td>Vencido hace {{ u.dias_restantes }} Dias</td>
+                                    {% endif %}
+                                    
+                                    {% endfor %}                                                                   
                             
+                                    
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -65,7 +74,6 @@
 <script src="{% static 'assets/dashboard/plugins/datatable/js/dataTables.buttons.min.js' %}"></script>
 <script src="{% static 'assets/dashboard/plugins/datatable/js/buttons.bootstrap5.min.js' %}"></script>
 <script src="{% static 'assets/dashboard/plugins/datatable/js/jszip.min.js' %}"></script>
-<script src="{% static 'assets/dashboard/plugins/datatable/pdfmake/pdfmake.min.js' %}"></script>
 <script src="{% static 'assets/dashboard/plugins/datatable/pdfmake/vfs_fonts.js' %}"></script>
 <script src="{% static 'assets/dashboard/plugins/datatable/js/buttons.html5.min.js' %}"></script>
 <script src="{% static 'assets/dashboard/plugins/datatable/js/buttons.print.min.js' %}"></script>

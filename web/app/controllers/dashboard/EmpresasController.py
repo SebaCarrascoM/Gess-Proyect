@@ -90,9 +90,17 @@ def listar_empresa(request):
     empresas = Empresa.objects.all()
     data["entity_empresa"]= empresas
     return render(request, 'app/dashboard/empresas/empresas.html', data)
+    
+@login_required
+def gestion_empresa(request):
+    data = {}
+    empresas = Empresa.objects.all()
+    data["entity_empresa"]= empresas
+    return render(request, 'app/dashboard/empresas/gestor-datos.html', data)
 
 @login_required
 def empresa_edit(request, id_empresa):
+    empresa_intancia = get_object_or_404(Empresa, id_empresa=id_empresa)
     empresa = Empresa.objects.filter(id_empresa = id_empresa)
     data = {
         'empresa':empresa
@@ -101,7 +109,7 @@ def empresa_edit(request, id_empresa):
     if request.method == 'POST':
         print(request.POST)
         result=1
-        formulario_empresa = EmpresaForm(data = request.POST)
+        formulario_empresa = EmpresaForm(data = request.POST , instance=empresa_intancia)
         if formulario_empresa.is_valid():
             formulario_empresa.save()
         else:

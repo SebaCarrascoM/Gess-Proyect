@@ -29,6 +29,11 @@ class ArchivoEmpresaForm(forms.ModelForm):
         model = ArchivoEmpresa
         fields = "__all__" 
 
+class ArchivoTrabajadorForm(forms.ModelForm):
+    class Meta:
+        model = ArchivoTrabajadores
+        fields = "__all__" 
+
 class CapacitacionForm(forms.ModelForm):
     class Meta:
         model = Capacitacion

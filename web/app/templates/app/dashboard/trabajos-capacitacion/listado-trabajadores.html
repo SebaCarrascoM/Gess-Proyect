@@ -55,6 +55,7 @@
                                     <td>{{ u.fecha_ingreso }}</td>
                                     <td><a class="btn btn-primary" href="{% url 'agregar-capacitacion' u.id_trabajador %}">Capacitacion</a></td>
                                     <td><a class="btn btn-primary" href="{% url 'agregar-trabajos' u.id_trabajador %}">Trabajos Nuevos</a></td>
+                                    <td><a class="btn btn-primary" href="{% url 'agregar-archivo-trabajador' u.id_trabajador %}">Nuevos Archivos</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

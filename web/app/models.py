@@ -21,6 +21,8 @@ class ArchivoEmpresa(models.Model):
     fecha_expedicion = models.DateField()
     id_empresa = models.ForeignKey('Empresa', models.DO_NOTHING, db_column='id_empresa')
     tipo_documento = models.CharField(max_length=50)
+    dias_restantes = models.IntegerField()
+
 
     class Meta:
         managed = False
@@ -41,6 +43,8 @@ class ArchivoTrabajadores(models.Model):
     tipo_archivo = models.CharField(max_length=50)
     fecha_expedicion = models.DateField()
     fecha_vencimiento = models.DateField()
+    observaciones = models.CharField(max_length=50)
+    dias_restantes = models.IntegerField()
     documento_trabajador = models.FileField(upload_to='documentos_trabajador/', null=True, blank=True, max_length=250)
 
     class Meta:

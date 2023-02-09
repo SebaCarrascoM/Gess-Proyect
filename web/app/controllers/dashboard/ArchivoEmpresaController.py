@@ -15,10 +15,13 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaIoBaseDownload
 import os
+import pathlib
+from os import remove
 import io
 import time
 from ...models import ArchivoEmpresa
 import pandas as pd
+from datetime import date
 
 
 
@@ -47,36 +50,36 @@ def agregar_archivo_empresa(request,id_empresa):
             'documento_empresa': request.FILES['documento_empresa'],  
             'fecha_expedicion':request.POST['fecha_expedicion'],
             'fecha_vencimiento':request.POST['fecha_vencimiento'], 
-            'observaciones':request.POST['observaciones'] 
+            'observaciones':request.POST['observaciones'],
+            'dias_restantes' : 0 
         }
         print(data_archivo)
-        archivo_nombre = ArchivoEmpresa(documento_empresa=request.FILES['documento_empresa'],
+
+        formulario_archivo = ArchivoEmpresaForm(data = data_archivo, files=request.FILES)
+        if formulario_archivo.is_valid():  
+            archivo_nombre = ArchivoEmpresa(documento_empresa=request.FILES['documento_empresa'],
             fecha_vencimiento=request.POST['fecha_vencimiento'],
             observaciones= request.POST['observaciones'],
             fecha_expedicion=request.POST['fecha_expedicion'],
             id_empresa_id=id_empresa,
             tipo_documento=request.POST['tipo_documento']
             )
-        archivo_nombre.save()
-        file_names = archivo_nombre
-        mime_types = "application/pdf"
-        file_metadata = {
-            'name': str(file_names),
-            'parents': [folder_id]
-        }
-        media = MediaFileUpload(os.getcwd()+"\\media\\"+str(file_names), mimetype=mime_types)
-        file=service.files().create(
-        body=file_metadata,
-        media_body = media,
-        fields = "id"
-        ).execute()
-
-        formulario_archivo = ArchivoEmpresaForm(data = data_archivo, files=request.FILES)
-        if formulario_archivo.is_valid():  
-            
+            archivo_nombre.save()
+            file_names = archivo_nombre
+            mime_types = "application/pdf"
+            file_metadata = {
+                'name': str(file_names),
+                'parents': [folder_id]
+            }
+            media = MediaFileUpload(os.getcwd()+"\\media\\"+str(file_names), mimetype=mime_types)
+            file=service.files().create(
+            body=file_metadata,
+            media_body = media,
+            fields = "id"
+            ).execute()
             
             id=archivo_nombre.id_documento_empresa
-            print(id)
+            print("media/"+str(archivo_nombre.documento_empresa))
             archivo_creado = ArchivoEmpresa.objects.filter(id_documento_empresa=id)
             archivo_creado.delete()   
             
@@ -90,23 +93,42 @@ def agregar_archivo_empresa(request,id_empresa):
             tipo_documento=request.POST['tipo_documento'])
             archivo_update.save()
             result = 1 
-            
         # login(request, user)
         if result == 1:
-                
+            
             
             messages.success(request, "Solicitud de contacto enviada correctamente.")
             return redirect (to="archivos")
             
         else:
             messages.error(request, "error.")
-        
+    
     return render(request, 'app/dashboard/archivo-empresa/agregar-archivo.html',data) 
 
 @login_required
 def listar_archivos(request):
+    count=0  
+    ejemplo_dir = 'media/documentos_empresa/'
+    directorio = pathlib.Path(ejemplo_dir)
+    for fichero in directorio.iterdir():
+        print(fichero.name)
+        remove("media/documentos_empresa/"+fichero.name)
+    
     data = {}
     archivos = ArchivoEmpresa.objects.all()
+    for ar in archivos:
+        if ar.fecha_vencimiento >= date.today():
+            dias_a_vencer=ar.fecha_vencimiento-date.today()
+            ArchivoEmpresa.objects.filter(id_documento_empresa=ar.id_documento_empresa).update(dias_restantes=str(dias_a_vencer.days))
+        else:
+            dias_vencidos = date.today()-ar.fecha_vencimiento
+            ArchivoEmpresa.objects.filter(id_documento_empresa=ar.id_documento_empresa).update(dias_restantes=str(dias_vencidos.days))
+            count+=1
+            messages.warning(request,"archivos vencidos "+ str(count) )
     data["entity_archivo"]= archivos
-    return render(request, 'app/dashboard/archivo-empresa/archivos.html',data)
+    fecha_hoy=date.today()
+    data["fecha_hoy"]=fecha_hoy
     
+    
+
+    return render(request, 'app/dashboard/archivo-empresa/archivos.html',data)

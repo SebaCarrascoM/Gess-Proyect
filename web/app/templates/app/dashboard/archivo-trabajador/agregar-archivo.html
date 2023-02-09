@@ -20,27 +20,32 @@
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6">
-                            
-                    <div class="control-group form-group">
-                        <label class="form-label">Empresa</label>
-                            {% for item in empresa %}
-                            <div class="main-content-label mg-b-5 mb-1">
-                                <p>{{ item.razon_social }}</p>
+                            <div class="control-group form-group">
+                                <label class="form-label">Empresa</label>
+                                    {% for item in empresa %}
+                                    <div class="main-content-label mg-b-5 mb-1">
+                                        <p>{{ item.razon_social }}</p>
+                                    </div>
+                                    {% endfor %}
+                                    <label class="form-label">Trabajador</label>
+                                    {% for item in trabajador %}
+                                    <div class="main-content-label mg-b-5 mb-1">
+                                        <p>{{ item.nombre_trabajador }}</p>
+                                    </div>
+                                    {% endfor %}                       
                             </div>
-                            {% endfor %}                        
-                    </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                     <div class="control-group form-group">
                         <label class="form-label">Tipo Documento</label>
-                        <input type="text" class="form-control required" name="tipo_documento" placeholder="Tipo Documento">
+                        <input type="text" class="form-control required" name="tipo_archivo" placeholder="Tipo Documento">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="control-group form-group">
-                        <label class="form-label">Documento Empresa</label>
-                        <input type="file" class="form-control required"  name="documento_empresa" placeholder="Documento Empresa">
+                        <label class="form-label">Documento Trabajador</label>
+                        <input type="file" class="form-control required"  name="documento_trabajador" placeholder="Documento Trabajador">
                     </div>
                 </div>
                 <div class="col-md-6">

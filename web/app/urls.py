@@ -10,6 +10,7 @@ from .controllers.dashboard.OAController import *
 from .controllers.dashboard.ProtocoloController import *
 from .controllers.dashboard.CalendarioController import *
 from .controllers.dashboard.ArchivoEmpresaController import *
+from .controllers.dashboard.ArchivoTrabajadorController import *
 
 urlpatterns = [
     #Home
@@ -25,6 +26,7 @@ urlpatterns = [
     path('empresas/', listar_empresa, name="empresas"),
     path('agregar-empresa/', agregar_empresa, name="agregar-empresa"),
     path('empresa-edit/<int:id_empresa>', empresa_edit, name="empresa-edit"),
+    path('gestor-empresas/', gestion_empresa, name="gestor-empresas"),
     #Trabajadores
     path('trabajadores/', listar_trabajadores, name="trabajadores"),
     path('agregar-trabajador/<int:id_empresa>', agregar_trabajador, name="agregar-trabajador"),
@@ -48,4 +50,7 @@ urlpatterns = [
     #ArchivosEmpresa
     path('agregar-archivo-empresa/<int:id_empresa>', agregar_archivo_empresa, name="agregar-archivo-empresa"),
     path('archivos/', listar_archivos, name="archivos"),
+    #ArchivoTrabajador
+    path('agregar-archivo-trabajador/<int:id_trabajador>', agregar_archivo_trabajador, name="agregar-archivo-trabajador"),
+    path('archivos-trabajador/', listar_archivos_trabajador, name="archivos-trabajador"),
 ]
