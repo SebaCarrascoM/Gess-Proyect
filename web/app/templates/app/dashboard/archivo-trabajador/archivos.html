@@ -25,6 +25,7 @@
                             <thead>
                                 <tr>
                                     <th class="border-bottom-0">Empresa</th>
+                                    <th class="border-bottom-0">Trabajador</th>
                                     <th class="border-bottom-0">Tipo Documento</th>
                                     <th class="border-bottom-0">Archivos</th>
                                     <th class="border-bottom-0">Observaciones</th>
@@ -35,12 +36,19 @@
                             <tbody>
                                 {% for u in entity_archivo %}
                                 <tr>                                    
-                                    <td>{{ u.id_empresa }}</td> 
-                                    <td>{{ u.tipo_documento }}</td> 
-                                    <td >{{ u.documento_empresa }}</td>
+                                    <td>{{ u.id_empresa }}</td>
+                                    <td>{{ u.id_trabajador }}</td>
+                                    <td>{{ u.tipo_archivo }}</td> 
+                                    <td><a href="{{ u.documento_trabajador }}" target="_blank">Ver Archivo</a></td>
                                     <td>{{ u.observaciones }}</td>
-                                    <td>{{ u.fecha_vencimiento }}</td>
-                                    <td>{{ u.fecha_expedicion }}</td>                                                         
+                                    <td>{{ u.fecha_expedicion }}</td>  
+                                    {% if u.fecha_vencimiento >= fecha_hoy %}
+                                        <td id="fecha_vencimiento" style="background-color: #7CFC00">{{ u.fecha_vencimiento }} </td>
+                                        <td>{{ u.dias_restantes }} Dias para Vencer</td>                                     
+                                    {% else %}
+                                        <td id="fecha_invalidada" style="background-color: #FF4500">{{ u.fecha_vencimiento }}</td>
+                                        <td>Vencido hace {{ u.dias_restantes }} Dias</td>
+                                    {% endif %}                                                                                         
                                 </tr>
                                 {% endfor %}
                             

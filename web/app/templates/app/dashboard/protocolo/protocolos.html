@@ -30,6 +30,7 @@
                                     <th class="border-bottom-0">Evidencia</th>
                                     <th class="border-bottom-0">Fecha Realizaciono</th>
                                     <th class="border-bottom-0">Proxima Aplicacion</th>
+                                    <th class="border-bottom-0">Editar Protocolo</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,6 +42,7 @@
                                     <td>{{ u.evidencia }}</td>
                                     <td>{{ u.feccha_realizacion }}</td>
                                     <td>{{ u.proxima_aplicacion }}</td>
+                                    <td><a class="btn btn-warning" href="{% url 'protocolo-edit' u.id_protocolo %}">Editar</a></td> 
                                 </tr>
                                 {% endfor %}
                             </tbody>

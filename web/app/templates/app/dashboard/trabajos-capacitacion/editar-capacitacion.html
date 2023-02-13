@@ -7,44 +7,39 @@
 
 {% block contenido %}
 
-<div class="container mt-5">
     <!-- row -->
 <div class="row">
     <div class="col-lg-12 col-md-12">
         <div class="card">
             <div class="card-body">
                 <div class="main-content-label mg-b-5 mb-4">
-                        Editar OA
+                    Editar Capacitacion
                 </div>
-                <form action="" method="post">
+                <form method="post">
                     {% csrf_token %}
-                    {% for o in oa %}
+                    {% for c in capacitacion %}
                     <div class="control-group form-group">
                         <label class="form-label">Empresa</label>
-                        <p>{{ o.id_empresa }}</p>
+                        <p>{{ c.id_empresa }}</p>
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Usuarios Web</label>
-                        <input type="text" value="{{ o.usuario_web }}" class="form-control required" name="usuario_web" placeholder="Usuarios Web">
+                        <label class="form-label">Trabajador</label>
+                        <p>{{ c.id_trabajador }}</p>
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Clave Web</label>
-                        <input type="text" value="{{ o.clave_web }}" class="form-control required" name="clave_web" placeholder="Clave Web">
+                        <label class="form-label">Tipo Capacitacion</label>
+                        <input type="text" value="{{ c.tipo_capacitacion }}" class="form-control required" name="tipo_capacitacion" placeholder="Tipo Capacitacion">
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Asesor OA</label>
-                        <input type="text" value="{{ o.asesor_oa }}" class="form-control required" name="asesor_oa" placeholder="Asesor OA">
+                        <label class="form-label">Fecha Realizacion</label>
+                        <input type="date" value="{{ c.fecha_realizacion }}" class="form-control required" name="fecha_realizacion" placeholder="Fecha Realizacion">
                     </div>
                     <div class="control-group form-group">
-                        <label class="form-label">Telefono</label>
-                        <input type="text" value="{{ o.telefono }}" class="form-control required" name="telefono" placeholder="Telefono">
-                    </div>
-                    <div class="control-group form-group">
-                        <label class="form-label">Correo OA</label>
-                        <input type="text" value="{{ o.correo_oa }}" class="form-control required" name="correo_oa" placeholder="Correo OA">
+                        <label class="form-label">Fecha Vencimiento</label>
+                        <input type="date" value="{{ c.fecha_vencimiento }}" class="form-control required" name="fecha_vencimiento" placeholder="Fecha Vencimiento">
                     </div>
                     <button type="submit" class="btn btn-primary float-end">Guardar</button>
-                {% endfor %}
+                    {% endfor %}
                 </form>
                 <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->
             </div>

@@ -107,15 +107,7 @@ def agregar_archivo_empresa(request,id_empresa):
 
 @login_required
 def listar_archivos(request):
-    count=0  
-    ejemplo_dir = 'media/documentos_empresa/'
-    directorio = pathlib.Path(ejemplo_dir)
-    for fichero in directorio.iterdir():
-        print(fichero.name)
-        remove("media/documentos_empresa/"+fichero.name)
-    
-    data = {}
-    archivos = ArchivoEmpresa.objects.all()
+    count=0 
     for ar in archivos:
         if ar.fecha_vencimiento >= date.today():
             dias_a_vencer=ar.fecha_vencimiento-date.today()
@@ -125,6 +117,17 @@ def listar_archivos(request):
             ArchivoEmpresa.objects.filter(id_documento_empresa=ar.id_documento_empresa).update(dias_restantes=str(dias_vencidos.days))
             count+=1
             messages.warning(request,"archivos vencidos "+ str(count) )
+    ejemplo_dir = 'media/documentos_empresa/'
+    directorio = pathlib.Path(ejemplo_dir)
+    for fichero in directorio.iterdir():
+        print(fichero.name)
+        remove("media/documentos_empresa/"+fichero.name)
+    
+    
+    
+    archivos = ArchivoEmpresa.objects.all()
+    data = {}
+    
     data["entity_archivo"]= archivos
     fecha_hoy=date.today()
     data["fecha_hoy"]=fecha_hoy

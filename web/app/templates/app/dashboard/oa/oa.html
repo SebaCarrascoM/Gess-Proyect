@@ -30,6 +30,7 @@
                                     <th class="border-bottom-0">Asesor OA</th>
                                     <th class="border-bottom-0">Telefono OA</th> 
                                     <th class="border-bottom-0">Correo OA</th>
+                                    <th class="border-bottom-0">Editar OA</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,6 +43,7 @@
                                     <td>{{ u.asesor_oa }}</td>
                                     <td>{{ u.telefono }}</td>
                                     <td>{{ u.correo_oa }}</td>
+                                    <td><a class="btn btn-warning" href="{% url 'oa-edit' u.id_oa %}">Editar</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

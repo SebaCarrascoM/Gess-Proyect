@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 import requests
 from ...forms import *
@@ -50,3 +50,46 @@ def listar_trabajadores(request):
     data["entity_trabajadores"]= trabajadores
     
     return render(request, 'app/dashboard/trabajadores/trabajadores.html',data)
+
+@login_required
+def trabajadores_edit(request, id_trabajador):
+    trabajador_intancia = get_object_or_404(Trabajadores, id_trabajador=id_trabajador)
+    trabajador = Trabajadores.objects.filter(id_trabajador = id_trabajador)
+    
+    for t in trabajador:
+        print(t.id_empresa)
+        empresa= Empresa.objects.filter(razon_social= t.id_empresa)
+        for emp in empresa:
+            id_empresa = emp.id_empresa    
+    result = 0
+    if request.method == 'POST':
+        print(request.POST)
+        data_trabajador = {
+            'id_empresa': id_empresa,
+            'nombre_trabajador':request.POST['nombre_trabajador'],
+            'rut_trabajador':request.POST['rut_trabajador'],
+            'cargo':request.POST['cargo'],
+            'area':request.POST['area'],
+            'telefono_trabajador':request.POST['telefono_trabajador'],
+            'email_trabajador':request.POST['email_trabajador'],
+            'fecha_nacimiento':request.POST['fecha_nacimiento'] ,
+            'fecha_ingreso':request.POST['fecha_ingreso'],
+            'direccion_trabajador':request.POST['direccion_trabajador']             
+        }
+        result=1
+        formulario_trabajador= TrabajadoresForm(data = data_trabajador , instance=trabajador_intancia)
+        if formulario_trabajador.is_valid():
+            
+            formulario_trabajador.save()
+        else:
+            result = 0
+        if result == 1:
+            messages.success(request, "Solicitud de contacto enviada correctamente.")
+            return redirect (to="trabajadores")
+        else:
+            messages.error(request, "error.")
+    
+    data = {
+        'trabajador':trabajador
+    }
+    return render(request, "app/dashboard/trabajador/trabajador-edit.html",data)

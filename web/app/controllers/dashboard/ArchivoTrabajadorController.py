@@ -124,13 +124,7 @@ def listar_archivos_trabajador(request):
     for fichero in directorio.iterdir():
         print(fichero.name)
         remove("media/documentos_trabajador/"+fichero.name)
-    
-    data = {}
     archivos = ArchivoTrabajadores.objects.all()
-    data["entity_archivo"]= archivos
-    fecha_hoy=date.today()
-    data["fecha_hoy"]=fecha_hoy
-    count=0
     for ar in archivos:
         if ar.fecha_vencimiento >= date.today():
             dias_a_vencer=ar.fecha_vencimiento-date.today()
@@ -141,5 +135,11 @@ def listar_archivos_trabajador(request):
             count+=1
             
             messages.warning(request,"archivos vencidos "+ str(count) )
+    data = {}
     
+    fecha_hoy=date.today()
+    data["fecha_hoy"]=fecha_hoy
+    count=0
+    
+    data["entity_archivo"]= archivos
     return render(request, 'app/dashboard/archivo-trabajador/archivos.html',data)

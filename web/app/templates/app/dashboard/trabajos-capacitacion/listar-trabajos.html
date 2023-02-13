@@ -29,7 +29,8 @@
                                     <th class="border-bottom-0">Trabajador</th>
                                     <th class="border-bottom-0">Tipo Trabajo</th>
                                     <th class="border-bottom-0">Fecha Realizacion</th>
-                                    <th class="border-bottom-0">Fecha Vencimiento</th>
+                                    <th class="border-bottom-0">Fecha Vencimiento
+                                    </th><th class="border-bottom-0">Editar Trabajo</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,6 +41,7 @@
                                     <td>{{ u.tipo_trabajo }}</td>
                                     <td>{{ u.fecha_realizacion }}</td>
                                     <td>{{ u.fecha_vencimiento }}</td>
+                                    <td><a class="btn btn-warning" href="{% url 'trabajos-edit' u.id_trabajos %}">Editar</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

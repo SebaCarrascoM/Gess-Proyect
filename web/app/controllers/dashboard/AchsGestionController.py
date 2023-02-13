@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 import requests
 from ...forms import *
@@ -30,7 +30,7 @@ def agregar_gestion(request,id_empresa):
         # login(request, user)
         if result == 1:
             messages.success(request, "Solicitud de contacto enviada correctamente.")
-            return redirect (to="trabajos")
+            return redirect (to="gestiones")
         else:
             messages.error(request, "error.")   
 
@@ -43,3 +43,41 @@ def listar_gestiones(request):
     data["entity_achs_gestion"]= achs_gestion
     
     return render(request, 'app/dashboard/achs-gestion/achs-gestiones.html',data)
+
+@login_required
+def achs_edit(request, id_achs_gestion):
+    achs_intancia = get_object_or_404(AchsGestion, id_achs_gestion=id_achs_gestion)
+    achs = AchsGestion.objects.filter(id_achs_gestion = id_achs_gestion)
+    
+    for a in achs:
+        print(a.id_empresa)
+        empresa= Empresa.objects.filter(razon_social= a.id_empresa)
+        for emp in empresa:
+            id_empresa = emp.id_empresa    
+    result = 0
+    if request.method == 'POST':
+        print(request.POST)
+        data_achs = {
+            'tipo_requisito':request.POST['tipo_requisito'],  
+            'accion':request.POST['accion'],
+            'fecha_vencimiento':request.POST['fecha_vencimiento'],
+            'observaciones':request.POST['observaciones'],       
+            'id_empresa':id_empresa
+        }
+        result=1
+        formulario_achs= AchsGestionForm(data = data_achs , instance=achs_intancia)
+        if formulario_achs.is_valid():
+            
+            formulario_achs.save()
+        else:
+            result = 0
+        if result == 1:
+            messages.success(request, "Solicitud de contacto enviada correctamente.")
+            return redirect (to="gestiones")
+        else:
+            messages.error(request, "error.")
+    
+    data = {
+        'achs':achs
+    }
+    return render(request, "app/dashboard/achs-gestion/editar-achsgestion.html",data)

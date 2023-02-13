@@ -13,35 +13,37 @@
         <div class="card">
             <div class="card-body">
                 <div class="main-content-label mg-b-5 mb-4">
-                    Agregar un nuevo Empresa
+                    Editar Contacto
                 </div>
-                <form action="" method="post">
+                <form method="post">
                     {% csrf_token %}
+                    {% for c in contacto %}
                     <div class="control-group form-group">
                         <label class="form-label">Empresa</label>
-                        <input type="text" class="form-control required" name="empresa" placeholder="Empresa">
+                        <p>{{ c.id_empresa }}</p>
                     </div>
                     <div class="control-group form-group">
                         <label class="form-label">Nombre Contacto</label>
-                        <input type="text" class="form-control required" name="nombre_contacto" placeholder="Nombre Contacto">
+                        <input type="text" value="{{c.nombre_contacto}}" class="form-control required" name="nombre_contacto" placeholder="Nombre Contacto">
                     </div>
                     <div class="control-group form-group">
                         <label class="form-label">Rut Contacto</label>
-                        <input type="text" class="form-control required" name="rut_contacto" placeholder="Rut Contacto">
+                        <input type="text" value="{{c.rut_contacto}}" class="form-control required" name="rut_contacto" placeholder="Rut Contacto">
                     </div>
                     <div class="control-group form-group mb-3">
                         <label class="form-label">Telefono Contacto</label>
-                        <input type="text" class="form-control required" name="telefono_contacto" placeholder="Telefono Contacto">
+                        <input type="text" value="{{c.telefono_contacto}}" class="form-control required" name="telefono_contacto" placeholder="Telefono Contacto">
                     </div>
                     <div class="control-group form-group mb-3">
                         <label class="form-label">Cargo Contacto</label>
-                        <input type="text" class="form-control required" name="cargo_contacto" placeholder="Cargo Contacto">
+                        <input type="text" value="{{c.cargo_contacto}}" class="form-control required" name="cargo_contacto" placeholder="Cargo Contacto">
                     </div>
                     <div class="control-group form-group mb-3">
                         <label class="form-label">Correo Contacto</label>
-                        <input type="text" class="form-control required" name="correo" placeholder="Correo Contacto">
+                        <input type="text" value="{{c.correo}}" class="form-control required" name="correo" placeholder="Correo Contacto">
                     </div>
                     <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                    {% endfor %}
                 </form>
                 <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->
             </div>
