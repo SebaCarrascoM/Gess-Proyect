@@ -93,3 +93,14 @@ def trabajadores_edit(request, id_trabajador):
         'trabajador':trabajador
     }
     return render(request, "app/dashboard/trabajador/trabajador-edit.html",data)
+
+@login_required
+def eliminar_trabajador(request,id_trabajador):
+    try:
+        trabajador = get_object_or_404(Trabajadores, id_trabajador=id_trabajador)
+        trabajador.delete()
+        messages.success(request, "Trabajador eliminada correctamente")
+        return redirect(to="trabajadores")
+    except:
+        messages.error(request, "Trabajador Asociado")
+        return redirect(to="trabajadores")

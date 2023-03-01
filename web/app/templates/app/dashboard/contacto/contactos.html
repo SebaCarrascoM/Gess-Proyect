@@ -31,6 +31,7 @@
                                     <th class="border-bottom-0">Cargo Contacto</th>                                    
                                     <th class="border-bottom-0">Correo Contacto</th>
                                     <th class="border-bottom-0">Editar Contacto</th>
+                                    <th class="border-bottom-0">Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,7 +43,8 @@
                                     <td>{{ u.telefono_contacto }}</td>
                                     <td>{{ u.cargo_contacto }}</td>
                                     <td>{{ u.correo }}</td>  
-                                    <td><a class="btn btn-warning" href="{% url 'contacto-edit' u.id_contacto %}">Editar</a></td>                                  
+                                    <td><a class="btn btn-warning" href="{% url 'contacto-edit' u.id_contacto %}">Editar</a></td>
+                                    <td><a class="btn btn-danger" href="{% url 'contacto-eliminar' u.id_contacto %}">Eliminar</a></td>                                  
                                 </tr>
                                 {% endfor %}
                             

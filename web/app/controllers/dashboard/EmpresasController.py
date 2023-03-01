@@ -120,3 +120,14 @@ def empresa_edit(request, id_empresa):
         else:
             messages.error(request, "error.")
     return render(request, "app/dashboard/empresas/empresa-edit.html",data)
+    
+@login_required
+def eliminar_empresa(request,id_empresa):
+    try:
+        empresa = get_object_or_404(Empresa, id_empresa=id_empresa)
+        empresa.delete()
+        messages.success(request, "Empresa eliminada correctamente")
+        return redirect(to="empresas")
+    except:
+        messages.error(request, "Empresa Utilizada")
+        return redirect(to="empresas")

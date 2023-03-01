@@ -83,3 +83,10 @@ def protocolo_edit(request, id_protocolo):
         'protocolo':protocolo
     }
     return render(request, "app/dashboard/protocolo/editar-protocolo.html",data)
+
+@login_required
+def eliminar_protocolo(request,id_protocolo):
+    protocolo = get_object_or_404(Protocolo, id_protocolo=id_protocolo)
+    protocolo.delete()
+    messages.success(request, "Protocolo eliminada correctamente")
+    return redirect(to="protocolo")

@@ -196,3 +196,17 @@ def capacitacion_edit(request, id_capacitacion):
         'capacitacion':capacitacion
     }
     return render(request, "app/dashboard/trabajos-capacitacion/editar-capacitacion.html",data)
+
+@login_required   
+def eliminar_trabajos(request,id_trabajos):
+    trabajos = get_object_or_404(Trabajos, id_trabajos=id_trabajos)
+    trabajos.delete()
+    messages.success(request, "Trabajo eliminada correctamente")
+    return redirect(to="trabajos")
+
+@login_required
+def eliminar_capacitacion(request,id_capacitacion):
+    capacitacion = get_object_or_404(Capacitacion, id_capacitacion=id_capacitacion)
+    capacitacion.delete()
+    messages.success(request, "Capacitacion eliminada correctamente")
+    return redirect(to="capacitacion")

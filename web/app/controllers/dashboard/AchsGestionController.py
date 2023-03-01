@@ -81,3 +81,10 @@ def achs_edit(request, id_achs_gestion):
         'achs':achs
     }
     return render(request, "app/dashboard/achs-gestion/editar-achsgestion.html",data)
+
+@login_required
+def eliminar_achs(request,id_achs_gestion):
+    achs = get_object_or_404(AchsGestion, id_achs_gestion=id_achs_gestion)
+    achs.delete()
+    messages.success(request, "ACHS eliminada correctamente")
+    return redirect(to="contactos")

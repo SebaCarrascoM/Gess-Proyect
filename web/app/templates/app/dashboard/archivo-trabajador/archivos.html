@@ -31,6 +31,8 @@
                                     <th class="border-bottom-0">Observaciones</th>
                                     <th class="border-bottom-0">Fecha Expedicion</th>
                                     <th class="border-bottom-0">Fecha Vencimiento</th>
+                                    <th class="border-bottom-0">Eliminar</th>
+                                    <th class="border-bottom-0">Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,7 +50,9 @@
                                     {% else %}
                                         <td id="fecha_invalidada" style="background-color: #FF4500">{{ u.fecha_vencimiento }}</td>
                                         <td>Vencido hace {{ u.dias_restantes }} Dias</td>
-                                    {% endif %}                                                                                         
+                                    {% endif %}
+                                    <td><a class="btn btn-danger" href="{% url 'archivo-trabajador-eliminar' u.id_archivo_trabajador %}">Eliminar</a></td> 
+                                    <td><a class="btn btn-warning" href="{% url 'archivo-trabajador-edit' u.id_archivo_trabajador %}">Editar</a></td>                                                                                         
                                 </tr>
                                 {% endfor %}
                             

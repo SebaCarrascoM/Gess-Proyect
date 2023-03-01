@@ -1,0 +1,88 @@
+{% extends 'app/dashboard/dashboard.html' %}
+
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+    <!-- row -->
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="main-content-label mg-b-5 mb-4">
+                        Editar Archivo
+                </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for a in archivo %}
+                    <div class="control-group form-group">
+                        <label class="form-label">Empresa</label>
+                        <p>{{ a.id_empresa }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="control-group form-group">
+                            <label class="form-label">Tipo Documento</label>
+                            <input type="text" value="{{a.tipo_documento}}" class="form-control required" name="tipo_documento" placeholder="Tipo Documento">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="control-group form-group">
+                            <label class="form-label">Documento Empresa</label>
+                            <input type="file" accept="application/pdf" class="form-control required"  name="documento_empresa" placeholder="Documento Empresa">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="control-group form-group">
+                            <label class="form-label">Fecha Expedicion</label>
+                            <input type="date" min="{{a.fecha_expedicion}}" class="form-control required" name="fecha_expedicion" placeholder="Fecha Expedicion">
+                        </div>
+                    </div>
+                        <div class="col-md-6">
+                        <div class="control-group form-group">
+                            <label class="form-label">Fecha Vencimiento</label>
+                            <input type="date" value="{{a.fecha_vencimiento}}" class="form-control required" name="fecha_vencimiento" placeholder="Fecha vencimiento">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="control-group form-group">
+                            <label class="form-label">Observaciones</label>
+                            <input type="text" value="{{a.observaciones}}" class="form-control required" name="observaciones" placeholder="Observaciones">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                {% endfor %}
+                </form>
+                <!-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- row closed -->
+</div>
+
+{% endblock %}
+
+{% block js %}
+<!--Internal  Select2 js -->
+<script src="{% static 'assets/dashboard/plugins/select2/js/select2.min.js' %}"></script>
+<!-- Internal Jquery.steps js -->
+<script src="{% static 'assets/dashboard/plugins/jquery-steps/jquery.steps.min.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/parsleyjs/parsley.min.js' %}"></script>
+<!--Internal  Form-wizard js -->
+<script src="{% static 'assets/dashboard/js/form-wizard.js' %}"></script>
+
+<!--Internal Fileuploads js-->
+<script src="{% static 'assets/dashboard/plugins/fileuploads/js/fileupload.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/fileuploads/js/file-upload.js' %}"></script>
+
+<!--Internal Fancy uploader js-->
+<script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.ui.widget.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.fileupload.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.iframe-transport.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/fancyuploder/jquery.fancy-fileupload.js' %}"></script>
+<script src="{% static 'assets/dashboard/plugins/fancyuploder/fancy-uploader.js' %}"></script>
+{% endblock %}

@@ -31,7 +31,7 @@
                                     <th class="border-bottom-0">Fecha Vencimiento</th>
                                     <th class="border-bottom-0">Observaciones</th>
                                     <th class="border-bottom-0">Editar ACHS</th>
-                                    
+                                    <th class="border-bottom-0">Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,6 +43,7 @@
                                     <td>{{ u.fecha_vencimiento }}</td>
                                     <td>{{ u.observaciones }}</td>
                                     <td><a class="btn btn-warning" href="{% url 'achs-edit' u.id_achs_gestion %}">Editar</a></td> 
+                                    <td><a class="btn btn-danger" href="{% url 'achs-eliminar' u.id_achs_gestion %}">Eliminar</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

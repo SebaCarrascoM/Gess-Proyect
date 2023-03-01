@@ -54,7 +54,7 @@
                                     <td>{{ u.nro_trabajadores }}</td>
                                     <td>{{ u.clave_seremi }}</td>
                                     <td><a class="btn btn-warning" href="{% url 'empresa-edit' u.id_empresa %}">Editar</a></td>
-                                    <td><a class="btn btn-danger" href="{#}">Eliminar</a></td>
+                                    <td><a class="btn btn-danger" href="{% url 'empresa-eliminar' u.id_empresa %}">Eliminar</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

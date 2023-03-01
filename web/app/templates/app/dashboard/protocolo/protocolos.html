@@ -31,6 +31,7 @@
                                     <th class="border-bottom-0">Fecha Realizaciono</th>
                                     <th class="border-bottom-0">Proxima Aplicacion</th>
                                     <th class="border-bottom-0">Editar Protocolo</th>
+                                    <th class="border-bottom-0">Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,6 +44,7 @@
                                     <td>{{ u.feccha_realizacion }}</td>
                                     <td>{{ u.proxima_aplicacion }}</td>
                                     <td><a class="btn btn-warning" href="{% url 'protocolo-edit' u.id_protocolo %}">Editar</a></td> 
+                                    <td><a class="btn btn-danger" href="{% url 'protocolo-eliminar' u.id_protocolo %}">Eliminar</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

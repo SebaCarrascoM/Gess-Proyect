@@ -22,13 +22,11 @@ def oa_edit(request, id_oa):
     oa = Oa.objects.filter(id_oa = id_oa)
     
     for o in oa:
-        print(o.id_empresa)
         empresa= Empresa.objects.filter(razon_social= o.id_empresa)
         for emp in empresa:
             id_empresa = emp.id_empresa    
     result = 0
     if request.method == 'POST':
-        print(request.POST)
         data_oa = {
             'usuario_web':request.POST['usuario_web'],
             'clave_web':request.POST['clave_web'],
@@ -54,3 +52,10 @@ def oa_edit(request, id_oa):
         'oa':oa
     }
     return render(request, "app/dashboard/oa/editar-oa.html",data)
+
+@login_required
+def eliminar_oa(request,id_oa):
+    oa = get_object_or_404(Oa, id_oa=id_oa)
+    oa.delete()
+    messages.success(request, "OA eliminada correctamente")
+    return redirect(to="oa")

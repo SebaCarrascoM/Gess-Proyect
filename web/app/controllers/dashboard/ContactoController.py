@@ -54,3 +54,10 @@ def contacto_edit(request, id_contacto):
         'contacto':contacto
     }
     return render(request, "app/dashboard/contacto/editar-contacto.html",data)
+
+@login_required
+def eliminar_contacto(request,id_contacto):
+    contacto = get_object_or_404(ContactoEmpresa, id_contacto=id_contacto)
+    contacto.delete()
+    messages.success(request, "Contacto eliminada correctamente")
+    return redirect(to="contactos")
