@@ -125,20 +125,20 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 # Develop
-DEBUG = True
-ALLOWED_HOSTS = []
-STATIC_URL = 'static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+# DEBUG = True
+# ALLOWED_HOSTS = []
+# STATIC_URL = 'static/'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Production
-# STATIC_URL="/static/"
-# MEDIA_URL='/media/'
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),) 
-# STATIC_ROOT='/home/sparemot/public_html/static'
-# MEDIA_ROOT='/home/sparemot/public_html/media'
-# DEBUG = False
-# ALLOWED_HOSTS = ['https://sparemotors.cl', 'sparemotors.cl']
+STATIC_URL="/static/"
+MEDIA_URL='/media/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),) 
+STATIC_ROOT='/home/gesscons/public_html/static'
+MEDIA_ROOT='/home/gesscons/public_html/media'
+DEBUG = False
+ALLOWED_HOSTS = ['https://www.gessconsultores.cl', 'gessconsultores.cl']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
