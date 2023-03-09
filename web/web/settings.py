@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sparemot_gssoc_db',
-        'USER': 'sparemot_gssoc_admin',
-        'PASSWORD': 'SBFZfX%btEJ]',
+        'NAME': 'gesscons_gssoc_db',
+        'USER': 'gesscons_gssoc_admin',
+        'PASSWORD': 'm2gwhB0A}m2W',
         'PORT': '3306',
-        'HOST': '104.243.32.64',
+        'HOST': '104.194.8.125',
     }
 }
 
