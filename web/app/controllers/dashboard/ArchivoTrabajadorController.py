@@ -20,7 +20,6 @@ from os import remove
 import io
 import time
 from ...models import ArchivoEmpresa
-import pandas as pd
 from datetime import date
 
 CLIENT_SECRET_FILE = "client_secrets.json"
@@ -195,9 +194,6 @@ def archivo_trabajador_edit(request, id_archivo_trabajador):
             media_body = media,
             fields = "id"
             ).execute()
-            
-            
-            
             link ="https://drive.google.com/file/d/"+file['id']+"/view"
             ArchivoTrabajadores.objects.filter(id_archivo_trabajador=id_archivo_trabajador).update(documento_trabajador=link)
             result = 1 

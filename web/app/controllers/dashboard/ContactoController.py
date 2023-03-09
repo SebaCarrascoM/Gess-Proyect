@@ -5,7 +5,6 @@ from ...forms import *
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator
-import pandas as pd
 from django.http import Http404
 # Create your views here.
 

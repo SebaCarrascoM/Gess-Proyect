@@ -20,7 +20,6 @@ from os import remove
 import io
 import time
 from ...models import ArchivoEmpresa
-import pandas as pd
 from datetime import date
 
 
