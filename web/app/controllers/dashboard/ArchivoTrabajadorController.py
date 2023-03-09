@@ -22,14 +22,14 @@ import time
 from ...models import ArchivoEmpresa
 from datetime import date
 
-CLIENT_SECRET_FILE = "home/gesscons/Gess-Proyect/web/client_secrets.json"
-API_NAME = "drive"
-API_VERSION = "v3"
-SCOPES = ["https://www.googleapis.com/auth/drive"]
+# CLIENT_SECRET_FILE = "home/gesscons/Gess-Proyect/web/client_secrets.json"
+# API_NAME = "drive"
+# API_VERSION = "v3"
+# SCOPES = ["https://www.googleapis.com/auth/drive"]
 
-service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
+# service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
 
-folder_id = "1KfebOArPb6a9nqsplDiLbraxa4mcgBuL"
+# folder_id = "1KfebOArPb6a9nqsplDiLbraxa4mcgBuL"
 
 
 @login_required

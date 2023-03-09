@@ -24,14 +24,14 @@ from datetime import date
 
 
 
-CLIENT_SECRET_FILE = "home/gesscons/Gess-Proyect/web/client_secrets.json"
-API_NAME = "drive"
-API_VERSION = "v3"
-SCOPES = ["https://www.googleapis.com/auth/drive"]
+# CLIENT_SECRET_FILE = "home/gesscons/Gess-Proyect/web/client_secrets.json"
+# API_NAME = "drive"
+# API_VERSION = "v3"
+# SCOPES = ["https://www.googleapis.com/auth/drive"]
 
-service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
+# service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
 
-folder_id = "1d2JtpvcHJCevxXUcSsyI9b__FP0P0A7b"
+# folder_id = "1d2JtpvcHJCevxXUcSsyI9b__FP0P0A7b"
 
 
 
