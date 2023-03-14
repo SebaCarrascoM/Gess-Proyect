@@ -56,8 +56,8 @@
                                     <td>{{ u.telefono_trabajador }}</td>
                                     <td>{{ u.fecha_nacimiento }}</td>
                                     <td>{{ u.fecha_ingreso }}</td>
-                                    <td><a class="btn btn-warning" href="#">Editar</a></td>
-                                    <td><a class="btn btn-danger" href="#">Eliminar</a></td>
+                                    <td><a class="btn btn-warning" href="{% url 'trabajador-edit' u.id_trabajador %}">Editar</a></td>
+                                    <td><a class="btn btn-danger" href="{% url 'trabajador-eliminar' u.id_trabajador %}">Eliminar</a></td>
                                 </tr>
                                 {% endfor %}
                                 

@@ -92,7 +92,7 @@ def trabajadores_edit(request, id_trabajador):
     data = {
         'trabajador':trabajador
     }
-    return render(request, "app/dashboard/trabajador/trabajador-edit.html",data)
+    return render(request, "app/dashboard/trabajadores/trabajador-edit.html",data)
 
 @login_required
 def eliminar_trabajador(request,id_trabajador):

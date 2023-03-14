@@ -15,10 +15,10 @@
                     <div>
                         <div class="row">
                             <div class="col">
-                                <h6 class="main-content-label mb-1">Trabajos Registrados</h6>
+                                <h6 class="main-content-label mb-1">Protocolos Registrados</h6>
                             </div>
                         </div>
-                        <p class="text-muted card-sub-title">En esta tabla se visualizan todos los trabajos registrados :</p>
+                        <p class="text-muted card-sub-title">En esta tabla se visualizan todos los Protocolos registrados :</p>
                     </div>
                     <div class="table-responsive  export-table">
                         <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
@@ -28,20 +28,20 @@
                                     <th class="border-bottom-0">Nombre Protocolo</th>
                                     <th class="border-bottom-0">Requisisto</th>
                                     <th class="border-bottom-0">Evidencia</th>
-                                    <th class="border-bottom-0">Fecha Realizaciono</th>
+                                    <th class="border-bottom-0">Fecha Realizacion</th>
                                     <th class="border-bottom-0">Proxima Aplicacion</th>
                                     <th class="border-bottom-0">Editar Protocolo</th>
                                     <th class="border-bottom-0">Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for u in entity %}
+                                {% for u in entity_protocolo %}
                                 <tr>
                                     <td>{{ u.id_empresa }}</td>
                                     <td>{{ u.nombre_protocolo }}</td>
                                     <td>{{ u.requisito }}</td>
                                     <td>{{ u.evidencia }}</td>
-                                    <td>{{ u.feccha_realizacion }}</td>
+                                    <td>{{ u.fecha_realizacion }}</td>
                                     <td>{{ u.proxima_aplicacion }}</td>
                                     <td><a class="btn btn-warning" href="{% url 'protocolo-edit' u.id_protocolo %}">Editar</a></td> 
                                     <td><a class="btn btn-danger" href="{% url 'protocolo-eliminar' u.id_protocolo %}">Eliminar</a></td>
