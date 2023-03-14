@@ -107,9 +107,17 @@ def empresa_edit(request, id_empresa):
     }
     result = 0
     if request.method == 'POST':
-        print(request.POST)
         result=1
-        formulario_empresa = EmpresaForm(data = request.POST , instance=empresa_intancia)
+        data_empresa = {
+            'razon_social':request.POST['razon_social'],
+            'rut_empresa':request.POST['rut_empresa'],
+            'direccion':request.POST['direccion'],
+            'ct':request.POST['ct'],
+            'clave_seremi':request.POST['clave_seremi'],
+            'seguro_laboral':request.POST['seguro_laboral'],
+            'nro_trabajadores':request.POST['nro_trabajadores']
+        }
+        formulario_empresa = EmpresaForm(data = data_empresa , instance=empresa_intancia)
         if formulario_empresa.is_valid():
             formulario_empresa.save()
         else:
