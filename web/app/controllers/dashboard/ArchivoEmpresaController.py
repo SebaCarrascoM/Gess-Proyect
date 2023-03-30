@@ -8,9 +8,8 @@ from django.core.paginator import Paginator
 from django.http import Http404
 from googleapiclient.http import MediaFileUpload
 from django.dispatch import receiver
-from django.conf import settings
 from .GoogleDrive import Create_Service
-import google.auth
+from django.conf import settings
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaIoBaseDownload
@@ -23,15 +22,15 @@ from ...models import ArchivoEmpresa
 from datetime import date
 
 
+CLIENT_SECRET_FILE = os.getcwd()+"/Gess-Proyect/web/client_secrets.json"
+API_NAME = "drive"
+API_VERSION = "v3"
+SCOPES = ["https://www.googleapis.com/auth/drive"]
 
-# CLIENT_SECRET_FILE = "home/gesscons/Gess-Proyect/web/client_secrets.json"
-# API_NAME = "drive"
-# API_VERSION = "v3"
-# SCOPES = ["https://www.googleapis.com/auth/drive"]
 
-# service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
+service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
 
-# folder_id = "1d2JtpvcHJCevxXUcSsyI9b__FP0P0A7b"
+folder_id = "1d2JtpvcHJCevxXUcSsyI9b__FP0P0A7b"
 
 
 
@@ -64,13 +63,16 @@ def agregar_archivo_empresa(request,id_empresa):
             tipo_documento=request.POST['tipo_documento']
             )
             archivo_nombre.save()
+            print(archivo_nombre)
             file_names = archivo_nombre
+            print("/home/gesscons/public_html/media/"+str(file_names))
             mime_types = "application/pdf"
             file_metadata = {
                 'name': str(file_names),
                 'parents': [folder_id]
             }
-            media = MediaFileUpload(os.getcwd()+"\\media\\"+str(file_names), mimetype=mime_types)
+            
+            media = MediaFileUpload("/home/gesscons/public_html/media/"+str(file_names), mimetype=mime_types)
             file=service.files().create(
             body=file_metadata,
             media_body = media,
@@ -117,11 +119,11 @@ def listar_archivos(request):
             ArchivoEmpresa.objects.filter(id_documento_empresa=ar.id_documento_empresa).update(dias_restantes=str(dias_vencidos.days))
             count+=1
             messages.warning(request,"archivos vencidos "+ str(count) )
-    ejemplo_dir = 'media/documentos_empresa/'
+    ejemplo_dir = '/home/gesscons/public_html/media/documentos_empresa/'
     directorio = pathlib.Path(ejemplo_dir)
     for fichero in directorio.iterdir():
         print(fichero.name)
-        remove("media/documentos_empresa/"+fichero.name)
+        remove("/home/gesscons/public_html/media/documentos_empresa/"+fichero.name)
     data = {}
     data["entity_archivo"]= archivos
     fecha_hoy=date.today()
@@ -179,7 +181,7 @@ def archivo_empresa_edit(request, id_documento_empresa):
                 'parents': [folder_id]
             }
             
-            media = MediaFileUpload(os.getcwd()+"\\media\\"+str(file_names), mimetype=mime_types)
+            media = MediaFileUpload("/home/gesscons/public_html/media/"+str(file_names), mimetype=mime_types)
             file=service.files().create(
             body=file_metadata,
             media_body = media,
